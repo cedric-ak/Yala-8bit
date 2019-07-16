@@ -5,39 +5,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60 myDefinition.h
 [c E2003 0 1 2 3 4 5 6 .. ]
 [n E2003 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
-[p mainexit ]
-"31
-[v _system_Initialize `(v ~T0 @X0 0 ef ]
-"22 _25LC160B_EEPROM.h
-[v _EEPROM_Write `(v ~T0 @X0 0 ef2`*uc`uc ]
-"42 myDefinition.h
-[v _internal_eeprom_read `(uc ~T0 @X0 0 ef1`uc ]
-"34
-[v _temp_Display `(v ~T0 @X0 0 ef ]
-"16 configuartion.h
-[p x FOSC=HS ]
-"17
-[p x WDTE=OFF ]
-"18
-[p x PWRTE=OFF ]
-"19
-[p x MCLRE=ON ]
-"20
-[p x CP=OFF ]
-"21
-[p x CPD=OFF ]
-"22
-[p x BOREN=OFF ]
-"23
-[p x IESO=ON ]
-"24
-[p x FCMEN=ON ]
-"25
-[p x LVP=ON ]
-"28
-[p x BOR4V=BOR40V ]
-"29
-[p x WRT=OFF ]
+"3255 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
+[v _EEADR `Vuc ~T0 @X0 0 e@269 ]
+"3503
+[s S137 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S137 . RD WR WREN WRERR . EEPGD ]
+"3502
+[u S136 `S137 1 ]
+[n S136 . . ]
+"3512
+[v _EECON1bits `VS136 ~T0 @X0 0 e@396 ]
+"3243
+[v _EEDATA `Vuc ~T0 @X0 0 e@268 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1728,37 +1707,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 . `E2003 0
 ]
 [; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
-[v $root$_main `(v ~T0 @X0 0 e ]
-"11 main.c
-[v _main `(i ~T0 @X0 1 ef ]
+"10 Internal_EEPROM.c
+[v _internal_eeprom_read `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 11: int main(void) {
-[e :U _main ]
+[; ;Internal_EEPROM.c: 10: uint8_t internal_eeprom_read(uint8_t addr){
+[e :U _internal_eeprom_read ]
+[v _addr `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 13: system_Initialize();
+"11
+[v _dataRead `*uc ~T0 @X0 1 a ]
+[; ;Internal_EEPROM.c: 11: uint8_t *dataRead;
+[; ;Internal_EEPROM.c: 12: EEADR = addr;
+"12
+[e = _EEADR _addr ]
+[; ;Internal_EEPROM.c: 13: EECON1bits.EEPGD = 0;
 "13
-[e ( _system_Initialize ..  ]
-[; ;main.c: 14: EEPROM_Write(internal_eeprom_read(0x24), 0x01);
+[e = . . _EECON1bits 0 5 -> -> 0 `i `uc ]
+[; ;Internal_EEPROM.c: 14: EECON1bits.RD = 1;
 "14
-[e ( _EEPROM_Write (2 , -> ( _internal_eeprom_read (1 -> -> 36 `i `uc `*uc -> -> 1 `i `uc ]
-[; ;main.c: 15: while (1) {
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;Internal_EEPROM.c: 15: dataRead = &EEDATA;
 "15
-[e :U 146 ]
-{
-[; ;main.c: 16: temp_Display();
+[e = _dataRead -> &U _EEDATA `*uc ]
+[; ;Internal_EEPROM.c: 16: return dataRead;
 "16
-[e ( _temp_Display ..  ]
-"17
-}
-[e :U 145 ]
-"15
-[e $U 146  ]
-[e :U 147 ]
-[; ;main.c: 17: }
-[; ;main.c: 18: return;
-"18
+[e ) -> _dataRead `uc ]
 [e $UE 144  ]
-[; ;main.c: 19: }
-"19
+[; ;Internal_EEPROM.c: 17: }
+"17
 [e :UE 144 ]
+}
+"19
+[v _internal_eeprom_write `(v ~T0 @X0 1 ef2`*uc`uc ]
+{
+[; ;Internal_EEPROM.c: 19: void internal_eeprom_write(uint8_t *addr, uint8_t value){
+[e :U _internal_eeprom_write ]
+[v _addr `*uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;Internal_EEPROM.c: 21: }
+"21
+[e :UE 145 ]
 }

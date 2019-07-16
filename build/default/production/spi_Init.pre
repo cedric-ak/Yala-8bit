@@ -2395,9 +2395,9 @@ char reading[2];
 } adc;
 
 # 22 "_25LC160B_EEPROM.h"
-extern void EEPROM_Write_Data(uint8_t iData, uint8_t iAddress);
+extern void EEPROM_Write(uint8_t *iData, uint8_t iAddress);
 extern void EEPROM_Write_String(char *sText, uint8_t iAddress);
-extern uint8_t EEPROM_Read_Data(uint8_t iAddress);
+extern uint8_t EEPROM_Read(uint8_t iAddress);
 char EEPROM_Read_String(uint16_t iAddress);
 
 # 15 "uart_Init.h"
@@ -2406,11 +2406,11 @@ extern void UART_Write_char(uint16_t iData);
 extern void UART_Write_String(uint8_t *cText);
 extern uint16_t UART_Read(void);
 
-# 40 "myDefinition.h"
+# 31 "myDefinition.h"
 void system_Initialize(void);
-void Oscillator_Init(void);
-void Interrupt_Init(void);
-void temp_Display(void);
+extern void Oscillator_Init(void);
+extern void Interrupt_Init(void);
+extern void temp_Display(void);
 unsigned int segment_Variable;
 extern void PWM_Init(uint32_t iFrequency);
 extern void PWM_DutyCycle(uint32_t iDutyCycle);
@@ -2418,22 +2418,25 @@ extern void TMR0_Init(void);
 extern void SPI_Init(void);
 extern void SPI_MasterTransmit(uint8_t iData);
 
+uint8_t internal_eeprom_read(uint8_t addr);
+
 uint8_t segment_Array[]={0x3f,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 
 
 
 
 typedef enum {
-TEMPERATURE,
-POTENTIOMETER,
-_7SEGMENT,
-PWM,
-UART,
-EEPROM
+ASSIGNMENT_1,
+ASSIGNMENT_2,
+ASSIGNMENT_3,
+ASSIGNMENT_4,
+ASSIGNMENT_5,
+ASSIGNMENT_6,
+ASSIGNMENT_7
 
 } t_Application;
 
-t_Application g_state = TEMPERATURE;
+t_Application g_state = ASSIGNMENT_1;
 
 # 10 "spi_Init.c"
 void SPI_Init(void){

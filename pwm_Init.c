@@ -5,7 +5,6 @@
  * Created on 12 July 2019, 8:24 PM
  */
 
-
 #include "myDefinition.h"
 /*
  PWM_Init function is to be called in main prior any activity related to PWM be executed (PMW1 in this case)
@@ -15,7 +14,7 @@
 void PWM_Init(uint32_t iFrequency){
   PWM_TRIS = input;
  
-  PR2 = (_XTAL_FREQ / (iFrequency * 4)) -1;                //set PWM period, (refer to device data sheet page. 126 equation 11-1) 
+  PR2 = (_XTAL_FREQ / (iFrequency * 4)) -1;               //set PWM period, (refer to device data sheet page. 126 equation 11-1) 
   CCP1CONbits.P1M   = 0b00;                               //single output P1A modulated, P1B, P1C, P1D assigned as port pins
   CCP1CONbits.CCP1M = 0b1100;                             //PWM mode P1A, P1B, P1C, P1D active low
   CCP1CONbits.DC1B  = 0b00;
@@ -28,12 +27,9 @@ void PWM_Init(uint32_t iFrequency){
   PWM_TRIS = output;                                      //set PWM1 pin as output
 }
 
-
 void PWM_DutyCycle(uint32_t iDutyCycle) {
- /*
- pwm duty cycle is set in percentage with a range of 0 - 100
-*/
+ /*pwm duty cycle is set in percentage with a range of 0 - 100*/
     iDutyCycle = (iDutyCycle * (4*(PR2 + 1)))/100;             //duty cycle ratio equation (refer to device data sheet page. 127 )
-    CCP1CONbits.DC1B = (iDutyCycle<<4);                       //assign duty to cycle to register
+    CCP1CONbits.DC1B = (iDutyCycle<<4);                        //assign duty to cycle to register
     CCPR1L = (iDutyCycle >> 2);    
 }

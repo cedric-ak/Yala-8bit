@@ -19,9 +19,9 @@ extern "C" {
 #define RDSR    0x05        //Read STATUS register
 #define WRSR    0x01        //Write STATUS register
     
-extern void EEPROM_Write_Data(uint8_t iData, uint8_t iAddress);
+extern void EEPROM_Write(uint8_t *iData, uint8_t iAddress);
 extern void EEPROM_Write_String(char *sText, uint8_t iAddress);
-extern uint8_t EEPROM_Read_Data(uint8_t iAddress);
+extern uint8_t EEPROM_Read(uint8_t iAddress);
 char EEPROM_Read_String(uint16_t iAddress);
 
 

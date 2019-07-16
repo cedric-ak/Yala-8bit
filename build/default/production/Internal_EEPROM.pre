@@ -1,5 +1,5 @@
 
-# 1 "SYST_Init.c"
+# 1 "Internal_EEPROM.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -2438,22 +2438,16 @@ ASSIGNMENT_7
 
 t_Application g_state = ASSIGNMENT_1;
 
-# 10 "SYST_Init.c"
-void system_Initialize(void) {
-Oscillator_Init();
-Interrupt_Init();
-pinManager();
-Lcd_Init();
-ADC_Init();
-TMR0_Init();
-PWM_Init(10000);
-PWM_DutyCycle(70);
-SPI_Init();
-UART_Init(9600);
+# 10 "Internal_EEPROM.c"
+uint8_t internal_eeprom_read(uint8_t addr){
+uint8_t *dataRead;
+EEADR = addr;
+EECON1bits.EEPGD = 0;
+EECON1bits.RD = 1;
+dataRead = &EEDATA;
+return dataRead;
 }
 
-void Oscillator_Init(void){
-OSCCON = 0x00;
-OSCTUNE = 0x00;
-}
+void internal_eeprom_write(uint8_t *addr, uint8_t value){
 
+}

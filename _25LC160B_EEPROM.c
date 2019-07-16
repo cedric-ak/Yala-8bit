@@ -7,7 +7,7 @@
 
 #include "myDefinition.h"
 
-void EEPROM_Write_Data(uint8_t iData, uint8_t iAddress){    
+void EEPROM_Write(uint8_t *iData, uint8_t iAddress){    
     /*consider interrupt on SPI*/
     CS_Chip_Select;                    //select EEPROM device
     SPI_MasterTransmit(WREN);          //Initiate write enable instruction
@@ -26,11 +26,11 @@ void EEPROM_Write_Data(uint8_t iData, uint8_t iAddress){
 void EEPROM_Write_String(char *sText, uint8_t iAddress){
     
     for(uint8_t iSize = 0; sText[iSize] != '\0'; iSize++){
-        EEPROM_Write_Data(sText[iSize], iAddress++);
+        EEPROM_Write_String(sText[iSize], iAddress++);
     }
 } 
 
-uint8_t EEPROM_Read_Data(uint8_t iAddress){
+uint8_t EEPROM_Read(uint8_t iAddress){
     CS_Chip_Select;                         //select EEPROM device
     __delay_ms(5);                          //wait write internal cycle time before attempt reading
     SPI_MasterTransmit(READ);               //initiate a read instruction
@@ -44,7 +44,7 @@ uint8_t EEPROM_Read_Data(uint8_t iAddress){
 char EEPROM_Read_String(uint16_t iAddress){
     char dataRead[];
     for(int AddRead = iAddress; AddRead <5; AddRead++){
-        dataRead[AddRead] = EEPROM_Read_Data(AddRead);
+        dataRead[AddRead] = EEPROM_Read(AddRead);
     }
     return dataRead;
 }

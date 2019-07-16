@@ -30,6 +30,7 @@
       <itemPath>spi_Init.c</itemPath>
       <itemPath>uart_Init.c</itemPath>
       <itemPath>timer_Init.c</itemPath>
+      <itemPath>Internal_EEPROM.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

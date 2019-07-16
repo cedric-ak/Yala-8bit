@@ -11,7 +11,7 @@
 int main(void) {
     
     system_Initialize();
-      
+    EEPROM_Write(internal_eeprom_read(0x24), 0x01);
     while (true) {
         temp_Display();
     }
