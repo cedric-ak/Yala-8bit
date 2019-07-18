@@ -2459,7 +2459,7 @@ t_Application g_state = ASSIGNMENT_1;
 int main(void) {
 
 system_Initialize();
-EEPROM_Write(internal_eeprom_read(0x24), 0x01);
+
 while (1) {
 temp_Display();
 }

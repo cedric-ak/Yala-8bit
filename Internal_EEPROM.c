@@ -17,5 +17,6 @@ uint8_t internal_eeprom_read(uint8_t addr){
 }
 
 void internal_eeprom_write(uint8_t *addr, uint8_t value){
-    
+  
+    return;
 }

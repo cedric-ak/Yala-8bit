@@ -2450,4 +2450,5 @@ return dataRead;
 
 void internal_eeprom_write(uint8_t *addr, uint8_t value){
 
+return;
 }

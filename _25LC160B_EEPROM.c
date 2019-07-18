@@ -31,6 +31,7 @@ void EEPROM_Write_String(char *sText, uint8_t iAddress){
 } 
 
 uint8_t EEPROM_Read(uint8_t iAddress){
+    uint8_t *dataRead;
     CS_Chip_Select;                         //select EEPROM device
     __delay_ms(5);                          //wait write internal cycle time before attempt reading
     SPI_MasterTransmit(READ);               //initiate a read instruction
@@ -38,7 +39,8 @@ uint8_t EEPROM_Read(uint8_t iAddress){
     SPI_MasterTransmit(iAddress);           //assigned low register address LSB
     SPI_MasterTransmit(NULL);               //dummy data
     CS_Chip_Desect;                         //deselect EEPROM device
-    return SSPBUF;
+    dataRead = &SSPBUF;
+    return dataRead;
 }
 
 char EEPROM_Read_String(uint16_t iAddress){

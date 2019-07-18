@@ -2471,10 +2471,10 @@ return temperature;
 }
 
 void temp_Display(void) {
-char TEMP[] = "Temperature:";
+char *TEMP = "Temperature:";
 Lcd_Set_Cursor(1,1);
 Lcd_write(TEMP);
 sprintf(sTemperature, "%3d", temp_Measurement());
-Lcd_Set_Cursor(1, sizeof(TEMP));
+Lcd_Set_Cursor(1, sizeof("Temperature:"));
 Lcd_write(sTemperature);
 }

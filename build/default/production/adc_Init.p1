@@ -1858,40 +1858,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc_Init.c: 40: void temp_Display(void) {
 [e :U _temp_Display ]
 [f ]
-[v F2022 `uc ~T0 @X0 -> 0 `x s ]
-[i F2022
-:U ..
--> 84 `c
--> 101 `c
--> 109 `c
--> 112 `c
--> 101 `c
--> 114 `c
--> 97 `c
--> 116 `c
--> 117 `c
--> 114 `c
--> 101 `c
--> 58 `c
--> 0 `c
-..
-]
 "41
-[v _TEMP `uc ~T0 @X0 13  a ]
-[; ;adc_Init.c: 41: char TEMP[] = "Temperature:";
-[e = _TEMP F2022 ]
+[v _TEMP `*uc ~T0 @X0 1 a ]
+[; ;adc_Init.c: 41: char *TEMP = "Temperature:";
+[e = _TEMP -> :s 1C `*uc ]
 [; ;adc_Init.c: 42: Lcd_Set_Cursor(1,1);
 "42
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 [; ;adc_Init.c: 43: Lcd_write(TEMP);
 "43
-[e ( _Lcd_write (1 &U _TEMP ]
+[e ( _Lcd_write (1 _TEMP ]
 [; ;adc_Init.c: 44: sprintf(sTemperature, "%3d", temp_Measurement());
 "44
-[e ( _sprintf (1 , (. , &U _sTemperature :s 1C -> ( _temp_Measurement ..  `i ]
-[; ;adc_Init.c: 45: Lcd_Set_Cursor(1, sizeof(TEMP));
+[e ( _sprintf (1 , (. , &U _sTemperature :s 2C -> ( _temp_Measurement ..  `i ]
+[; ;adc_Init.c: 45: Lcd_Set_Cursor(1, sizeof("Temperature:"));
 "45
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> # _TEMP `ui `uc ]
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 13 `ui `uc ]
 [; ;adc_Init.c: 46: Lcd_write(sTemperature);
 "46
 [e ( _Lcd_write (1 &U _sTemperature ]
@@ -1900,5 +1882,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 153 ]
 }
 [p f _sprintf 8421504 ]
-[a 1C 37 51 100 0 ]
-
+[a 2C 37 51 100 0 ]
+[a 1C 84 101 109 112 101 114 97 116 117 114 101 58 0 ]

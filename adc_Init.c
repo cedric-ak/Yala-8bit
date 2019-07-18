@@ -38,10 +38,10 @@ uint8_t temp_Measurement(void) {
 }
 
 void temp_Display(void) {
-    char TEMP[] = "Temperature:";
+    char *TEMP = "Temperature:";
     Lcd_Set_Cursor(1,1);
     Lcd_write(TEMP);
     sprintf(sTemperature, "%3d", temp_Measurement()); //convert float to string for lcd display
-    Lcd_Set_Cursor(1, sizeof(TEMP));
+    Lcd_Set_Cursor(1, sizeof("Temperature:"));
     Lcd_write(sTemperature);
 }

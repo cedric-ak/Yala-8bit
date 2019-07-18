@@ -8,10 +8,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "31
 [v _system_Initialize `(v ~T0 @X0 0 ef ]
-"22 _25LC160B_EEPROM.h
-[v _EEPROM_Write `(v ~T0 @X0 0 ef2`*uc`uc ]
-"42 myDefinition.h
-[v _internal_eeprom_read `(uc ~T0 @X0 0 ef1`uc ]
 "34
 [v _temp_Display `(v ~T0 @X0 0 ef ]
 "16 configuartion.h
@@ -1738,9 +1734,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 13: system_Initialize();
 "13
 [e ( _system_Initialize ..  ]
-[; ;main.c: 14: EEPROM_Write(internal_eeprom_read(0x24), 0x01);
-"14
-[e ( _EEPROM_Write (2 , -> ( _internal_eeprom_read (1 -> -> 36 `i `uc `*uc -> -> 1 `i `uc ]
 [; ;main.c: 15: while (1) {
 "15
 [e :U 146 ]

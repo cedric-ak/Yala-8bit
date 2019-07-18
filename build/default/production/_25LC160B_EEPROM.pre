@@ -2463,6 +2463,7 @@ EEPROM_Write_String(sText[iSize], iAddress++);
 }
 
 uint8_t EEPROM_Read(uint8_t iAddress){
+uint8_t *dataRead;
 PORTAbits.RA5 = 0;
 _delay((unsigned long)((5)*(4000000UL/4000.0)));
 SPI_MasterTransmit(0x03);
@@ -2470,7 +2471,8 @@ SPI_MasterTransmit(iAddress>>8);
 SPI_MasterTransmit(iAddress);
 SPI_MasterTransmit((0));
 PORTAbits.RA5 = 1;
-return SSPBUF;
+dataRead = &SSPBUF;
+return dataRead;
 }
 
 char EEPROM_Read_String(uint16_t iAddress){

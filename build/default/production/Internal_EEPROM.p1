@@ -1745,7 +1745,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _addr `*uc ~T0 @X0 1 r1 ]
 [v _value `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;Internal_EEPROM.c: 21: }
+[; ;Internal_EEPROM.c: 21: return;
 "21
+[e $UE 145  ]
+[; ;Internal_EEPROM.c: 22: }
+"22
 [e :UE 145 ]
 }

@@ -1796,47 +1796,53 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _EEPROM_Read ]
 [v _iAddress `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;_25LC160B_EEPROM.c: 34: PORTAbits.RA5 = 0;
 "34
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-[; ;_25LC160B_EEPROM.c: 35: _delay((unsigned long)((5)*(4000000UL/4000.0)));
+[v _dataRead `*uc ~T0 @X0 1 a ]
+[; ;_25LC160B_EEPROM.c: 34: uint8_t *dataRead;
+[; ;_25LC160B_EEPROM.c: 35: PORTAbits.RA5 = 0;
 "35
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
-[; ;_25LC160B_EEPROM.c: 36: SPI_MasterTransmit(0x03);
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+[; ;_25LC160B_EEPROM.c: 36: _delay((unsigned long)((5)*(4000000UL/4000.0)));
 "36
-[e ( _SPI_MasterTransmit (1 -> -> 3 `i `uc ]
-[; ;_25LC160B_EEPROM.c: 37: SPI_MasterTransmit(iAddress>>8);
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+[; ;_25LC160B_EEPROM.c: 37: SPI_MasterTransmit(0x03);
 "37
-[e ( _SPI_MasterTransmit (1 -> >> -> _iAddress `i -> 8 `i `uc ]
-[; ;_25LC160B_EEPROM.c: 38: SPI_MasterTransmit(iAddress);
+[e ( _SPI_MasterTransmit (1 -> -> 3 `i `uc ]
+[; ;_25LC160B_EEPROM.c: 38: SPI_MasterTransmit(iAddress>>8);
 "38
-[e ( _SPI_MasterTransmit (1 _iAddress ]
-[; ;_25LC160B_EEPROM.c: 39: SPI_MasterTransmit((0));
+[e ( _SPI_MasterTransmit (1 -> >> -> _iAddress `i -> 8 `i `uc ]
+[; ;_25LC160B_EEPROM.c: 39: SPI_MasterTransmit(iAddress);
 "39
-[e ( _SPI_MasterTransmit (1 -> -> 0 `i `uc ]
-[; ;_25LC160B_EEPROM.c: 40: PORTAbits.RA5 = 1;
+[e ( _SPI_MasterTransmit (1 _iAddress ]
+[; ;_25LC160B_EEPROM.c: 40: SPI_MasterTransmit((0));
 "40
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-[; ;_25LC160B_EEPROM.c: 41: return SSPBUF;
+[e ( _SPI_MasterTransmit (1 -> -> 0 `i `uc ]
+[; ;_25LC160B_EEPROM.c: 41: PORTAbits.RA5 = 1;
 "41
-[e ) _SSPBUF ]
-[e $UE 150  ]
-[; ;_25LC160B_EEPROM.c: 42: }
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+[; ;_25LC160B_EEPROM.c: 42: dataRead = &SSPBUF;
 "42
+[e = _dataRead -> &U _SSPBUF `*uc ]
+[; ;_25LC160B_EEPROM.c: 43: return dataRead;
+"43
+[e ) -> _dataRead `uc ]
+[e $UE 150  ]
+[; ;_25LC160B_EEPROM.c: 44: }
+"44
 [e :UE 150 ]
 }
-"44
+"46
 [v _EEPROM_Read_String `(uc ~T0 @X0 1 ef1`ui ]
 {
-[; ;_25LC160B_EEPROM.c: 44: char EEPROM_Read_String(uint16_t iAddress){
+[; ;_25LC160B_EEPROM.c: 46: char EEPROM_Read_String(uint16_t iAddress){
 [e :U _EEPROM_Read_String ]
 [v _iAddress `ui ~T0 @X0 1 r1 ]
 [f ]
-"45
+"47
 [v _dataRead `uc ~T0 @X0 -> 0 `x a ]
-[; ;_25LC160B_EEPROM.c: 45: char dataRead[];
-[; ;_25LC160B_EEPROM.c: 46: for(int AddRead = iAddress; AddRead <5; AddRead++){
-"46
+[; ;_25LC160B_EEPROM.c: 47: char dataRead[];
+[; ;_25LC160B_EEPROM.c: 48: for(int AddRead = iAddress; AddRead <5; AddRead++){
+"48
 {
 [v _AddRead `i ~T0 @X0 1 a ]
 [e = _AddRead -> _iAddress `i ]
@@ -1844,23 +1850,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 153  ]
 [e :U 152 ]
 {
-[; ;_25LC160B_EEPROM.c: 47: dataRead[AddRead] = EEPROM_Read(AddRead);
-"47
+[; ;_25LC160B_EEPROM.c: 49: dataRead[AddRead] = EEPROM_Read(AddRead);
+"49
 [e = *U + &U _dataRead * -> -> _AddRead `ui `ux -> -> # *U &U _dataRead `ui `ux ( _EEPROM_Read (1 -> _AddRead `uc ]
-"48
+"50
 }
-"46
+"48
 [e ++ _AddRead -> 1 `i ]
 [e $ < _AddRead -> 5 `i 152  ]
 [e :U 153 ]
-"48
+"50
 }
-[; ;_25LC160B_EEPROM.c: 48: }
-[; ;_25LC160B_EEPROM.c: 49: return dataRead;
-"49
+[; ;_25LC160B_EEPROM.c: 50: }
+[; ;_25LC160B_EEPROM.c: 51: return dataRead;
+"51
 [e ) -> &U _dataRead `uc ]
 [e $UE 151  ]
-[; ;_25LC160B_EEPROM.c: 50: }
-"50
+[; ;_25LC160B_EEPROM.c: 52: }
+"52
 [e :UE 151 ]
 }
