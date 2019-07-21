@@ -2,9 +2,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "45 adc_Init.h
 [u S143 `ui 1 `uc -> 2 `i ]
 [n S143 . result reading ]
-"60 myDefinition.h
-[c E2007 0 1 2 3 4 5 6 .. ]
-[n E2007 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
+"63 myDefinition.h
+[c E2011 0 1 2 3 4 5 6 .. ]
+[n E2011 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
 "463 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S16 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
@@ -1706,21 +1706,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;myDefinition.h: 44: uint8_t segment_Array[]={0x3f,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-[; ;myDefinition.h: 49: typedef enum {
-[; ;myDefinition.h: 50: ASSIGNMENT_1,
-[; ;myDefinition.h: 51: ASSIGNMENT_2,
-[; ;myDefinition.h: 52: ASSIGNMENT_3,
-[; ;myDefinition.h: 53: ASSIGNMENT_4,
-[; ;myDefinition.h: 54: ASSIGNMENT_5,
-[; ;myDefinition.h: 55: ASSIGNMENT_6,
-[; ;myDefinition.h: 56: ASSIGNMENT_7
-[; ;myDefinition.h: 58: } t_Application;
-"60
-[v _g_state `E2007 ~T0 @X0 1 e ]
+[; ;myDefinition.h: 46: extern void ASS_1(void);
+[; ;myDefinition.h: 47: extern void Ass_2(void);
+[; ;myDefinition.h: 52: typedef enum {
+[; ;myDefinition.h: 53: ASSIGNMENT_1,
+[; ;myDefinition.h: 54: ASSIGNMENT_2,
+[; ;myDefinition.h: 55: ASSIGNMENT_3,
+[; ;myDefinition.h: 56: ASSIGNMENT_4,
+[; ;myDefinition.h: 57: ASSIGNMENT_5,
+[; ;myDefinition.h: 58: ASSIGNMENT_6,
+[; ;myDefinition.h: 59: ASSIGNMENT_7
+[; ;myDefinition.h: 61: } t_Application;
+"63
+[v _g_state `E2011 ~T0 @X0 1 e ]
 [i _g_state
-. `E2007 0
+. `E2011 0
 ]
-[; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
+[; ;myDefinition.h: 63: t_Application g_state = ASSIGNMENT_1;
 "19 timer_Init.c
 [v _TMR0_Init `(v ~T0 @X0 1 ef ]
 {

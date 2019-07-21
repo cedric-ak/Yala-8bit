@@ -21,6 +21,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Assignement" projectFiles="true">
         <itemPath>Assignement_One.c</itemPath>
+        <itemPath>Assignement_Two.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>pin_Manager.c</itemPath>

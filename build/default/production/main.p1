@@ -2,14 +2,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "45 adc_Init.h
 [u S143 `ui 1 `uc -> 2 `i ]
 [n S143 . result reading ]
-"60 myDefinition.h
-[c E2007 0 1 2 3 4 5 6 .. ]
-[n E2007 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
+"63 myDefinition.h
+[c E2011 0 1 2 3 4 5 6 .. ]
+[n E2011 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
 [p mainexit ]
 "31
 [v _system_Initialize `(v ~T0 @X0 0 ef ]
 "34
 [v _temp_Display `(v ~T0 @X0 0 ef ]
+"46
+[v _ASS_1 `(v ~T0 @X0 0 ef ]
+"47
+[v _Ass_2 `(v ~T0 @X0 0 ef ]
 "16 configuartion.h
 [p x FOSC=HS ]
 "17
@@ -1711,21 +1715,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;myDefinition.h: 44: uint8_t segment_Array[]={0x3f,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-[; ;myDefinition.h: 49: typedef enum {
-[; ;myDefinition.h: 50: ASSIGNMENT_1,
-[; ;myDefinition.h: 51: ASSIGNMENT_2,
-[; ;myDefinition.h: 52: ASSIGNMENT_3,
-[; ;myDefinition.h: 53: ASSIGNMENT_4,
-[; ;myDefinition.h: 54: ASSIGNMENT_5,
-[; ;myDefinition.h: 55: ASSIGNMENT_6,
-[; ;myDefinition.h: 56: ASSIGNMENT_7
-[; ;myDefinition.h: 58: } t_Application;
-"60
-[v _g_state `E2007 ~T0 @X0 1 e ]
+[; ;myDefinition.h: 46: extern void ASS_1(void);
+[; ;myDefinition.h: 47: extern void Ass_2(void);
+[; ;myDefinition.h: 52: typedef enum {
+[; ;myDefinition.h: 53: ASSIGNMENT_1,
+[; ;myDefinition.h: 54: ASSIGNMENT_2,
+[; ;myDefinition.h: 55: ASSIGNMENT_3,
+[; ;myDefinition.h: 56: ASSIGNMENT_4,
+[; ;myDefinition.h: 57: ASSIGNMENT_5,
+[; ;myDefinition.h: 58: ASSIGNMENT_6,
+[; ;myDefinition.h: 59: ASSIGNMENT_7
+[; ;myDefinition.h: 61: } t_Application;
+"63
+[v _g_state `E2011 ~T0 @X0 1 e ]
 [i _g_state
-. `E2007 0
+. `E2011 0
 ]
-[; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
+[; ;myDefinition.h: 63: t_Application g_state = ASSIGNMENT_1;
 [v $root$_main `(v ~T0 @X0 0 e ]
 "11 main.c
 [v _main `(i ~T0 @X0 1 ef ]
@@ -1750,83 +1756,71 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 19: case ASSIGNMENT_1:
 "19
 [e :U 150 ]
-[; ;main.c: 21: g_state = ASSIGNMENT_2;
+[; ;main.c: 20: ASS_1();
+"20
+[e ( _ASS_1 ..  ]
+[; ;main.c: 21: break;
 "21
-[e = _g_state . `E2007 1 ]
-[; ;main.c: 22: break;
-"22
 [e $U 148  ]
-[; ;main.c: 24: case ASSIGNMENT_2:
-"24
+[; ;main.c: 23: case ASSIGNMENT_2:
+"23
 [e :U 151 ]
-[; ;main.c: 25: g_state = ASSIGNMENT_3;
+[; ;main.c: 24: Ass_2();
+"24
+[e ( _Ass_2 ..  ]
+[; ;main.c: 25: break;
 "25
-[e = _g_state . `E2007 2 ]
-[; ;main.c: 26: break;
-"26
 [e $U 148  ]
-[; ;main.c: 28: case ASSIGNMENT_3:
-"28
+[; ;main.c: 27: case ASSIGNMENT_3:
+"27
 [e :U 152 ]
-[; ;main.c: 29: g_state = ASSIGNMENT_5;
+[; ;main.c: 29: break;
 "29
-[e = _g_state . `E2007 4 ]
-[; ;main.c: 30: break;
+[e $U 148  ]
+[; ;main.c: 30: case ASSIGNMENT_5:
 "30
-[e $U 148  ]
-[; ;main.c: 31: case ASSIGNMENT_5:
-"31
 [e :U 153 ]
-[; ;main.c: 32: g_state = ASSIGNMENT_6;
+[; ;main.c: 32: break;
 "32
-[e = _g_state . `E2007 5 ]
-[; ;main.c: 33: break;
-"33
 [e $U 148  ]
-[; ;main.c: 35: case ASSIGNMENT_6:
-"35
+[; ;main.c: 34: case ASSIGNMENT_6:
+"34
 [e :U 154 ]
-[; ;main.c: 36: g_state = ASSIGNMENT_7;
+[; ;main.c: 36: break;
 "36
-[e = _g_state . `E2007 6 ]
-[; ;main.c: 37: break;
-"37
 [e $U 148  ]
-[; ;main.c: 39: case ASSIGNMENT_7:
-"39
+[; ;main.c: 38: case ASSIGNMENT_7:
+"38
 [e :U 155 ]
-[; ;main.c: 40: g_state = ASSIGNMENT_1;
+[; ;main.c: 40: break;
 "40
-[e = _g_state . `E2007 0 ]
-[; ;main.c: 41: break;
-"41
 [e $U 148  ]
-"43
+"42
 }
-[; ;main.c: 43: }
+[; ;main.c: 42: }
 [e $U 148  ]
 "18
 [e :U 149 ]
-[e [\ _g_state , $ . `E2007 0 150
- , $ . `E2007 1 151
- , $ . `E2007 2 152
- , $ . `E2007 4 153
- , $ . `E2007 5 154
- , $ . `E2007 6 155
+[e [\ _g_state , $ . `E2011 0 150
+ , $ . `E2011 1 151
+ , $ . `E2011 2 152
+ , $ . `E2011 4 153
+ , $ . `E2011 5 154
+ , $ . `E2011 6 155
  148 ]
-"43
+"42
 [e :U 148 ]
-"44
+"43
 }
 [e :U 145 ]
 "15
 [e $U 146  ]
 [e :U 147 ]
-[; ;main.c: 44: }
-[; ;main.c: 45: return;
-"45
+[; ;main.c: 43: }
+[; ;main.c: 44: return;
+"44
 [e $UE 144  ]
-[; ;main.c: 46: }
-"46
+[; ;main.c: 45: }
+"45
 [e :UE 144 ]
 }
