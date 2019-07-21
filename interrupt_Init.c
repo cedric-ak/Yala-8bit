@@ -17,6 +17,9 @@ void Interrupt_Init(void) {
     
     PIE1bits.RCIE = set;   //EUSART receive interrupt enabled
     PIR1bits.RCIF = clear; //clear EUSART receive interrupt
+    
+//    PIE2bits.EEIE = set;  //enable EEPROM interrupt
+//    PIR2bits.EEIF = clear;
 }
 
 void interrupt ISR(void) {

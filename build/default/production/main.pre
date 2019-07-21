@@ -2412,10 +2412,13 @@ char reading[2];
 } adc;
 
 # 22 "_25LC160B_EEPROM.h"
-extern void EEPROM_Write(uint8_t *iData, uint8_t iAddress);
-extern void EEPROM_Write_String(char *sText, uint8_t iAddress);
-extern uint8_t EEPROM_Read(uint8_t iAddress);
-char EEPROM_Read_String(uint16_t iAddress);
+extern void eeprom_Write(uint8_t *iData, uint8_t iAddress);
+extern void eeprom_Write_String(char *sText, uint8_t iAddress);
+extern uint8_t eeprom_Read(uint8_t iAddress);
+char eeprom_Read_String(uint16_t iAddress);
+
+extern uint8_t internal_eeprom_read(uint8_t addr);
+extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 
 # 15 "uart_Init.h"
 extern void UART_Init(uint16_t baudRate);
@@ -2462,6 +2465,34 @@ system_Initialize();
 
 while (1) {
 temp_Display();
+
+switch(g_state){
+case ASSIGNMENT_1:
+
+g_state = ASSIGNMENT_2;
+break;
+
+case ASSIGNMENT_2:
+g_state = ASSIGNMENT_3;
+break;
+
+case ASSIGNMENT_3:
+g_state = ASSIGNMENT_5;
+break;
+case ASSIGNMENT_5:
+g_state = ASSIGNMENT_6;
+break;
+
+case ASSIGNMENT_6:
+g_state = ASSIGNMENT_7;
+break;
+
+case ASSIGNMENT_7:
+g_state = ASSIGNMENT_1;
+break;
+
+}
 }
 return;
 }
+

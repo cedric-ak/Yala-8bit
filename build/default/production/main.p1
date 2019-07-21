@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [u S143 `ui 1 `uc -> 2 `i ]
 [n S143 . result reading ]
 "60 myDefinition.h
-[c E2003 0 1 2 3 4 5 6 .. ]
-[n E2003 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
+[c E2007 0 1 2 3 4 5 6 .. ]
+[n E2007 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
 [p mainexit ]
 "31
 [v _system_Initialize `(v ~T0 @X0 0 ef ]
@@ -1671,10 +1671,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc_Init.h: 46: uint16_t result;
 [; ;adc_Init.h: 47: char reading[2];
 [; ;adc_Init.h: 48: } adc;
-[; ;_25LC160B_EEPROM.h: 22: extern void EEPROM_Write(uint8_t *iData, uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 23: extern void EEPROM_Write_String(char *sText, uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 24: extern uint8_t EEPROM_Read(uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 25: char EEPROM_Read_String(uint16_t iAddress);
+[; ;_25LC160B_EEPROM.h: 22: extern void eeprom_Write(uint8_t *iData, uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 23: extern void eeprom_Write_String(char *sText, uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 24: extern uint8_t eeprom_Read(uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 25: char eeprom_Read_String(uint16_t iAddress);
+[; ;_25LC160B_EEPROM.h: 27: extern uint8_t internal_eeprom_read(uint8_t addr);
+[; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 [; ;uart_Init.h: 15: extern void UART_Init(uint16_t baudRate);
 [; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
 [; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t *cText);
@@ -1719,9 +1721,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myDefinition.h: 56: ASSIGNMENT_7
 [; ;myDefinition.h: 58: } t_Application;
 "60
-[v _g_state `E2003 ~T0 @X0 1 e ]
+[v _g_state `E2007 ~T0 @X0 1 e ]
 [i _g_state
-. `E2003 0
+. `E2007 0
 ]
 [; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
 [v $root$_main `(v ~T0 @X0 0 e ]
@@ -1741,17 +1743,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 16: temp_Display();
 "16
 [e ( _temp_Display ..  ]
-"17
+[; ;main.c: 18: switch(g_state){
+"18
+[e $U 149  ]
+{
+[; ;main.c: 19: case ASSIGNMENT_1:
+"19
+[e :U 150 ]
+[; ;main.c: 21: g_state = ASSIGNMENT_2;
+"21
+[e = _g_state . `E2007 1 ]
+[; ;main.c: 22: break;
+"22
+[e $U 148  ]
+[; ;main.c: 24: case ASSIGNMENT_2:
+"24
+[e :U 151 ]
+[; ;main.c: 25: g_state = ASSIGNMENT_3;
+"25
+[e = _g_state . `E2007 2 ]
+[; ;main.c: 26: break;
+"26
+[e $U 148  ]
+[; ;main.c: 28: case ASSIGNMENT_3:
+"28
+[e :U 152 ]
+[; ;main.c: 29: g_state = ASSIGNMENT_5;
+"29
+[e = _g_state . `E2007 4 ]
+[; ;main.c: 30: break;
+"30
+[e $U 148  ]
+[; ;main.c: 31: case ASSIGNMENT_5:
+"31
+[e :U 153 ]
+[; ;main.c: 32: g_state = ASSIGNMENT_6;
+"32
+[e = _g_state . `E2007 5 ]
+[; ;main.c: 33: break;
+"33
+[e $U 148  ]
+[; ;main.c: 35: case ASSIGNMENT_6:
+"35
+[e :U 154 ]
+[; ;main.c: 36: g_state = ASSIGNMENT_7;
+"36
+[e = _g_state . `E2007 6 ]
+[; ;main.c: 37: break;
+"37
+[e $U 148  ]
+[; ;main.c: 39: case ASSIGNMENT_7:
+"39
+[e :U 155 ]
+[; ;main.c: 40: g_state = ASSIGNMENT_1;
+"40
+[e = _g_state . `E2007 0 ]
+[; ;main.c: 41: break;
+"41
+[e $U 148  ]
+"43
+}
+[; ;main.c: 43: }
+[e $U 148  ]
+"18
+[e :U 149 ]
+[e [\ _g_state , $ . `E2007 0 150
+ , $ . `E2007 1 151
+ , $ . `E2007 2 152
+ , $ . `E2007 4 153
+ , $ . `E2007 5 154
+ , $ . `E2007 6 155
+ 148 ]
+"43
+[e :U 148 ]
+"44
 }
 [e :U 145 ]
 "15
 [e $U 146  ]
 [e :U 147 ]
-[; ;main.c: 17: }
-[; ;main.c: 18: return;
-"18
+[; ;main.c: 44: }
+[; ;main.c: 45: return;
+"45
 [e $UE 144  ]
-[; ;main.c: 19: }
-"19
+[; ;main.c: 46: }
+"46
 [e :UE 144 ]
 }

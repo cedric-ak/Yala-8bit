@@ -7,10 +7,10 @@
 
 #include "myDefinition.h"
 
-void EEPROM_Write(uint8_t *iData, uint8_t iAddress){    
+void eeprom_Write(uint8_t *iData, uint8_t iAddress){    
     /*consider interrupt on SPI*/
     CS_Chip_Select;                    //select EEPROM device
-    SPI_MasterTransmit(WREN);          //Initiate write enable instruction
+    SPI_MasterTransmit(WEN);          //Initiate write enable instruction
     CS_Chip_Desect;                    //deselect EEPROM device
     __delay_ms(2);
     
@@ -23,14 +23,14 @@ void EEPROM_Write(uint8_t *iData, uint8_t iAddress){
     CS_Chip_Desect;                   //deselect EEPROM device
 }
 
-void EEPROM_Write_String(char *sText, uint8_t iAddress){
+void eeprom_Write_String(char *sText, uint8_t iAddress){
     
     for(uint8_t iSize = 0; sText[iSize] != '\0'; iSize++){
-        EEPROM_Write_String(sText[iSize], iAddress++);
+        eeprom_Write_String(sText[iSize], iAddress++);
     }
 } 
 
-uint8_t EEPROM_Read(uint8_t iAddress){
+uint8_t eeprom_Read(uint8_t iAddress){
     uint8_t *dataRead;
     CS_Chip_Select;                         //select EEPROM device
     __delay_ms(5);                          //wait write internal cycle time before attempt reading
@@ -43,10 +43,10 @@ uint8_t EEPROM_Read(uint8_t iAddress){
     return dataRead;
 }
 
-char EEPROM_Read_String(uint16_t iAddress){
+char eeprom_Read_String(uint16_t iAddress){
     char dataRead[];
     for(int AddRead = iAddress; AddRead <5; AddRead++){
-        dataRead[AddRead] = EEPROM_Read(AddRead);
+        dataRead[AddRead] = eeprom_Read(AddRead);
     }
     return dataRead;
 }

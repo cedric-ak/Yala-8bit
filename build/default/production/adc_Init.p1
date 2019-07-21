@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [u S143 `ui 1 `uc -> 2 `i ]
 [n S143 . result reading ]
 "60 myDefinition.h
-[c E2003 0 1 2 3 4 5 6 .. ]
-[n E2003 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
+[c E2007 0 1 2 3 4 5 6 .. ]
+[n E2007 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
 "1249 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [s S45 :1 `uc 1 :1 `uc 1 :4 `uc 1 :2 `uc 1 ]
 [n S45 . ADON GO_nDONE CHS ADCS ]
@@ -1691,10 +1691,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adc_Init.h: 46: uint16_t result;
 [; ;adc_Init.h: 47: char reading[2];
 [; ;adc_Init.h: 48: } adc;
-[; ;_25LC160B_EEPROM.h: 22: extern void EEPROM_Write(uint8_t *iData, uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 23: extern void EEPROM_Write_String(char *sText, uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 24: extern uint8_t EEPROM_Read(uint8_t iAddress);
-[; ;_25LC160B_EEPROM.h: 25: char EEPROM_Read_String(uint16_t iAddress);
+[; ;_25LC160B_EEPROM.h: 22: extern void eeprom_Write(uint8_t *iData, uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 23: extern void eeprom_Write_String(char *sText, uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 24: extern uint8_t eeprom_Read(uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 25: char eeprom_Read_String(uint16_t iAddress);
+[; ;_25LC160B_EEPROM.h: 27: extern uint8_t internal_eeprom_read(uint8_t addr);
+[; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 [; ;uart_Init.h: 15: extern void UART_Init(uint16_t baudRate);
 [; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
 [; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t *cText);
@@ -1739,9 +1741,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myDefinition.h: 56: ASSIGNMENT_7
 [; ;myDefinition.h: 58: } t_Application;
 "60
-[v _g_state `E2003 ~T0 @X0 1 e ]
+[v _g_state `E2007 ~T0 @X0 1 e ]
 [i _g_state
-. `E2003 0
+. `E2007 0
 ]
 [; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
 "9 adc_Init.c

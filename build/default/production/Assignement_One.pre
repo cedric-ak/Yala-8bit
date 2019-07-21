@@ -1,5 +1,5 @@
 
-# 1 "timer_Init.c"
+# 1 "Assignement_One.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -2441,17 +2441,25 @@ ASSIGNMENT_7
 
 t_Application g_state = ASSIGNMENT_1;
 
-# 19 "timer_Init.c"
-void TMR0_Init(void) {
-INTCONbits.T0IE = 1;
-INTCONbits.T0IF = 0;
+# 10 "Assignement_One.c"
+uint32_t *dataBuffer;
+bool data_TransferComplete;
+char *student_Number = "201147296";
+char *student_Name = "Akilimali";
 
-OPTION_REGbits.T0CS = 0;
-OPTION_REGbits.PSA = 0;
-OPTION_REGbits.PS = 0b101;
-TMR0 = 100;
+void ASS_1(void){
+
+for (int bSize = 0; !PIR1bits.RCIF; bSize++) {
+dataBuffer[bSize] = UART_Read();
+if (!PIR1bits.RCIF == 1)
+data_TransferComplete = 1;
 }
 
-void TMR1_Init(void){
-
+if (PORTBbits.RB7 == 1 || data_TransferComplete) {
+for (int bSize = 0; !TXSTAbits.TRMT; bSize++)
+UART_Write_String(dataBuffer[bSize]);
+data_TransferComplete = 0;
 }
+return;
+}
+

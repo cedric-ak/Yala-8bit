@@ -5,33 +5,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60 myDefinition.h
 [c E2007 0 1 2 3 4 5 6 .. ]
 [n E2007 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
-"1544 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
-[s S57 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S57 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1543
-[u S56 `S57 1 ]
-[n S56 . . ]
-"1555
-[v _TRISCbits `VS56 ~T0 @X0 0 e@135 ]
-"2039
-[v _PR2 `Vuc ~T0 @X0 0 e@146 ]
-"945
-[s S33 :4 `uc 1 :2 `uc 1 :2 `uc 1 ]
-[n S33 . CCP1M DC1B P1M ]
-"950
-[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S34 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 DC1B0 DC1B1 P1M0 P1M1 ]
-"960
-[s S35 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S35 . . CCP1Y CCP1X ]
-"944
-[u S32 `S33 1 `S34 1 `S35 1 ]
-[n S32 . . . . ]
-"966
-[v _CCP1CONbits `VS32 ~T0 @X0 0 e@23 ]
-"925
-[v _CCPR1L `Vuc ~T0 @X0 0 e@21 ]
-"541
+"18 uart_Init.h
+[v _UART_Read `(ui ~T0 @X0 0 ef ]
+"541 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
 "540
@@ -39,17 +15,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S18 . . ]
 "551
 [v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
-"776
-[s S27 :2 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S27 . T2CKPS TMR2ON TOUTPS ]
-"781
-[s S28 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S28 . T2CKPS0 T2CKPS1 . TOUTPS0 TOUTPS1 TOUTPS2 TOUTPS3 ]
-"775
-[u S26 `S27 1 `S28 1 ]
-[n S26 . . . ]
-"791
-[v _T2CONbits `VS26 ~T0 @X0 0 e@18 ]
+"232
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"231
+[u S7 `S8 1 ]
+[n S7 . . ]
+"243
+[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
+"17 uart_Init.h
+[v _UART_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+"2560 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
+[s S99 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S99 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"2570
+[s S100 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S100 . TXD8 . nTX8 ]
+"2575
+[s S101 :6 `uc 1 :1 `uc 1 ]
+[n S101 . . TX8_9 ]
+"2559
+[u S98 `S99 1 `S100 1 `S101 1 ]
+[n S98 . . . . ]
+"2580
+[v _TXSTAbits `VS98 ~T0 @X0 0 e@152 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1742,67 +1731,92 @@ Version 3.2 HI-TECH Software Intermediate Code
 . `E2007 0
 ]
 [; ;myDefinition.h: 60: t_Application g_state = ASSIGNMENT_1;
-"14 pwm_Init.c
-[v _PWM_Init `(v ~T0 @X0 1 ef1`ul ]
-{
-[; ;pwm_Init.c: 14: void PWM_Init(uint32_t iFrequency){
-[e :U _PWM_Init ]
-[v _iFrequency `ul ~T0 @X0 1 r1 ]
-[f ]
-[; ;pwm_Init.c: 15: TRISCbits.TRISC2 = 1;
+"10 Assignement_One.c
+[v _dataBuffer `*ul ~T0 @X0 1 e ]
+[; ;Assignement_One.c: 10: uint32_t *dataBuffer;
+"11
+[v _data_TransferComplete `uc ~T0 @X0 1 e ]
+[; ;Assignement_One.c: 11: bool data_TransferComplete;
+"12
+[v _student_Number `*uc ~T0 @X0 1 e ]
+[i _student_Number
+-> :s 1C `*uc
+]
+[; ;Assignement_One.c: 12: char *student_Number = "201147296";
+"13
+[v _student_Name `*uc ~T0 @X0 1 e ]
+[i _student_Name
+-> :s 2C `*uc
+]
+[; ;Assignement_One.c: 13: char *student_Name = "Akilimali";
 "15
-[e = . . _TRISCbits 0 2 -> -> 1 `i `uc ]
-[; ;pwm_Init.c: 17: PR2 = (4000000UL / (iFrequency * 4)) -1;
+[v _ASS_1 `(v ~T0 @X0 1 ef ]
+{
+[; ;Assignement_One.c: 15: void ASS_1(void){
+[e :U _ASS_1 ]
+[f ]
+[; ;Assignement_One.c: 17: for (int bSize = 0; !PIR1bits.RCIF; bSize++) {
 "17
-[e = _PR2 -> - / -> 4000000 `ul * _iFrequency -> -> -> 4 `i `l `ul -> -> -> 1 `i `l `ul `uc ]
-[; ;pwm_Init.c: 18: CCP1CONbits.P1M = 0b00;
+{
+[v _bSize `i ~T0 @X0 1 a ]
+[e = _bSize -> 0 `i ]
+[e $U 148  ]
+[e :U 145 ]
+{
+[; ;Assignement_One.c: 18: dataBuffer[bSize] = UART_Read();
 "18
-[e = . . _CCP1CONbits 0 2 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 19: CCP1CONbits.CCP1M = 0b1100;
+[e = *U + _dataBuffer * -> _bSize `x -> -> # *U _dataBuffer `i `x -> ( _UART_Read ..  `ul ]
+[; ;Assignement_One.c: 19: if (!PIR1bits.RCIF == 1)
 "19
-[e = . . _CCP1CONbits 0 0 -> -> 12 `i `uc ]
-[; ;pwm_Init.c: 20: CCP1CONbits.DC1B = 0b00;
+[e $ ! == -> ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i `i -> 1 `i 149  ]
+[; ;Assignement_One.c: 20: data_TransferComplete = 1;
 "20
-[e = . . _CCP1CONbits 0 1 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 21: CCPR1L = 0x00;
+[e = _data_TransferComplete -> -> 1 `i `uc ]
+[e :U 149 ]
 "21
-[e = _CCPR1L -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 23: PIR1bits.TMR2IF = 0;
+}
+"17
+[e ++ _bSize -> 1 `i ]
+[e :U 148 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 145  ]
+[e :U 146 ]
+"21
+}
+[; ;Assignement_One.c: 21: }
+[; ;Assignement_One.c: 23: if (PORTBbits.RB7 == 1 || data_TransferComplete) {
 "23
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 24: T2CONbits.TOUTPS = 0b0000;
+[e $ ! || == -> . . _PORTBbits 0 7 `i -> 1 `i != -> _data_TransferComplete `i -> -> -> 0 `i `uc `i 150  ]
+{
+[; ;Assignement_One.c: 24: for (int bSize = 0; !TXSTAbits.TRMT; bSize++)
 "24
-[e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 25: T2CONbits.T2CKPS = 0b00;
+{
+[v _bSize `i ~T0 @X0 1 a ]
+[e = _bSize -> 0 `i ]
+[e $U 154  ]
 "25
-[e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 26: T2CONbits.TMR2ON = 1;
+[e :U 151 ]
+[; ;Assignement_One.c: 25: UART_Write_String(dataBuffer[bSize]);
+[e ( _UART_Write_String (1 -> *U + _dataBuffer * -> _bSize `x -> -> # *U _dataBuffer `i `x `*uc ]
+"24
+[e ++ _bSize -> 1 `i ]
+[e :U 154 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 151  ]
+[e :U 152 ]
+"25
+}
+[; ;Assignement_One.c: 26: data_TransferComplete = 0;
 "26
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;pwm_Init.c: 27: TRISCbits.TRISC2 = 0;
+[e = _data_TransferComplete -> -> 0 `i `uc ]
 "27
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-[; ;pwm_Init.c: 28: }
+}
+[e :U 150 ]
+[; ;Assignement_One.c: 27: }
+[; ;Assignement_One.c: 28: return;
 "28
+[e $UE 144  ]
+[; ;Assignement_One.c: 29: }
+"29
 [e :UE 144 ]
 }
-"30
-[v _PWM_DutyCycle `(v ~T0 @X0 1 ef1`ul ]
-{
-[; ;pwm_Init.c: 30: void PWM_DutyCycle(uint32_t iDutyCycle) {
-[e :U _PWM_DutyCycle ]
-[v _iDutyCycle `ul ~T0 @X0 1 r1 ]
-[f ]
-[; ;pwm_Init.c: 32: iDutyCycle = (iDutyCycle * (4*(PR2 + 1)))/100;
-"32
-[e = _iDutyCycle / * _iDutyCycle -> -> * -> 4 `i + -> _PR2 `i -> 1 `i `l `ul -> -> -> 100 `i `l `ul ]
-[; ;pwm_Init.c: 33: CCP1CONbits.DC1B = (iDutyCycle<<4);
-"33
-[e = . . _CCP1CONbits 0 1 -> << _iDutyCycle -> 4 `i `uc ]
-[; ;pwm_Init.c: 34: CCPR1L = (iDutyCycle >> 2);
-"34
-[e = _CCPR1L -> >> _iDutyCycle -> 2 `i `uc ]
-[; ;pwm_Init.c: 35: }
-"35
-[e :UE 145 ]
-}
+[a 2C 65 107 105 108 105 109 97 108 105 0 ]
+[a 1C 50 48 49 49 52 55 50 57 54 0 ]

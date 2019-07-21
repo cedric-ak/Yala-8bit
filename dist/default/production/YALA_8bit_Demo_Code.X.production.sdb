@@ -4,7 +4,7 @@
 [d chip 16F887 ]
 [d frameptr 6 ]
 "60 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\myDefinition.h
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -13,7 +13,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -22,7 +22,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -31,7 +31,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -40,7 +40,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -49,7 +49,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -58,7 +58,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -67,7 +67,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -76,7 +76,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -85,7 +85,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -94,7 +94,7 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -103,7 +103,16 @@ ASSIGNMENT_5 4
 ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
-[e E2003 . `uc
+[e E2007 . `uc
+ASSIGNMENT_1 0
+ASSIGNMENT_2 1
+ASSIGNMENT_3 2
+ASSIGNMENT_4 3
+ASSIGNMENT_5 4
+ASSIGNMENT_6 5
+ASSIGNMENT_7 6
+]
+[e E2007 . `uc
 ASSIGNMENT_1 0
 ASSIGNMENT_2 1
 ASSIGNMENT_3 2
@@ -113,9 +122,9 @@ ASSIGNMENT_6 5
 ASSIGNMENT_7 6
 ]
 "26 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\_25LC160B_EEPROM.c
-[v _EEPROM_Write_String EEPROM_Write_String `(v  1 e 1 0 ]
+[v _eeprom_Write_String eeprom_Write_String `(v  1 e 1 0 ]
 "33
-[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+[v _eeprom_Read eeprom_Read `(uc  1 e 1 0 ]
 "13 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\adc_Init.c
 [v _ADC_Init ADC_Init `(v  1 e 1 0 ]
 "24
@@ -154,7 +163,7 @@ ASSIGNMENT_7 6
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
 "10 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\interrupt_Init.c
 [v _Interrupt_Init Interrupt_Init `(v  1 e 1 0 ]
-"22
+"25
 [v _ISR ISR `II(v  1 e 1 0 ]
 "10 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\lcd_Config.c
 [v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
@@ -190,6 +199,10 @@ ASSIGNMENT_7 6
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
 "27
 [v _UART_Write_char UART_Write_char `(v  1 e 1 0 ]
+"32
+[v _UART_Write_String UART_Write_String `(v  1 e 1 0 ]
+"38
+[v _UART_Read UART_Read `(ui  1 e 2 0 ]
 "9 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\adc_Init.c
 [v _rawData rawData `ui  1 e 2 0 ]
 "10
@@ -199,6 +212,10 @@ ASSIGNMENT_7 6
 [u S19 . 2 `ui 1 result 2 0 `[2]uc 1 reading 2 0 ]
 "48 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\adc_Init.h
 [v _adc adc `S19  1 e 2 0 ]
+"10 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\Assignement_One.c
+[v _dataBuffer dataBuffer `*.1ul  1 e 1 0 ]
+"11
+[v _data_TransferComplete data_TransferComplete `uc  1 e 1 0 ]
 "57 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "164
@@ -510,85 +527,89 @@ ASSIGNMENT_7 6
 "3512
 [u S1082 . 1 `S1075 1 . 1 0 ]
 [v _EECON1bits EECON1bits `VES1082  1 e 1 @396 ]
+"3542
+[v _EECON2 EECON2 `VEuc  1 e 1 @397 ]
 "3784
 [v _GO_DONE GO_DONE `VEb  1 e 0 @249 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
 [v _dpowers dpowers `DC[5]ui  1 s 10 dpowers ]
+"60 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\myDefinition.h
+[v _g_state g_state `E2007  1 e 1 0 ]
 "11 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"19
+"46
 } 0
 "40 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\adc_Init.c
 [v _temp_Display temp_Display `(v  1 e 1 0 ]
 {
 "41
-[v temp_Display@TEMP TEMP `*.24uc  1 a 1 78 ]
+[v temp_Display@TEMP TEMP `*.24uc  1 a 1 15 ]
 "47
 } 0
 "24
 [v _temp_Measurement temp_Measurement `(uc  1 e 1 0 ]
 {
 "30
-[v temp_Measurement@sample sample `i  1 a 2 73 ]
+[v temp_Measurement@sample sample `i  1 a 2 75 ]
 "38
 } 0
 "28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 {
-[v ___lwtoft@c c `ui  1 p 2 5 ]
+[v ___lwtoft@c c `ui  1 p 2 8 ]
 "31
 } 0
 "44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
-[v ___fttol@lval lval `ul  1 a 4 63 ]
+[v ___fttol@lval lval `ul  1 a 4 65 ]
 "46
-[v ___fttol@exp1 exp1 `uc  1 a 1 67 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 62 ]
+[v ___fttol@exp1 exp1 `uc  1 a 1 69 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 64 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 54 ]
+[v ___fttol@f1 f1 `f  1 p 3 56 ]
 "73
 } 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 {
 "65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 20 ]
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 22 ]
 "64
-[v ___ftmul@sign sign `uc  1 a 1 24 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 23 ]
-[v ___ftmul@exp exp `uc  1 a 1 19 ]
+[v ___ftmul@sign sign `uc  1 a 1 26 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 25 ]
+[v ___ftmul@exp exp `uc  1 a 1 21 ]
 "62
-[v ___ftmul@f1 f1 `f  1 p 3 9 ]
-[v ___ftmul@f2 f2 `f  1 p 3 12 ]
+[v ___ftmul@f1 f1 `f  1 p 3 11 ]
+[v ___ftmul@f2 f2 `f  1 p 3 14 ]
 "157
 } 0
 "56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 36 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 38 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 40 ]
-[v ___ftdiv@exp exp `uc  1 a 1 39 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 35 ]
+[v ___ftdiv@sign sign `uc  1 a 1 42 ]
+[v ___ftdiv@exp exp `uc  1 a 1 41 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 37 ]
 "56
-[v ___ftdiv@f2 f2 `f  1 p 3 25 ]
-[v ___ftdiv@f1 f1 `f  1 p 3 28 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 27 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 30 ]
 "86
 } 0
 "86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 {
 "88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 53 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 52 ]
-[v ___ftadd@sign sign `uc  1 a 1 51 ]
+[v ___ftadd@exp1 exp1 `uc  1 a 1 55 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 54 ]
+[v ___ftadd@sign sign `uc  1 a 1 53 ]
 "86
-[v ___ftadd@f1 f1 `f  1 p 3 41 ]
-[v ___ftadd@f2 f2 `f  1 p 3 44 ]
+[v ___ftadd@f1 f1 `f  1 p 3 43 ]
+[v ___ftadd@f2 f2 `f  1 p 3 46 ]
 "148
 } 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
@@ -617,7 +638,7 @@ ASSIGNMENT_7 6
 [v sprintf@ap ap `[1]*.4v  1 a 1 3 ]
 "492
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
-[v sprintf@f f `*.24DCuc  1 p 1 75 ]
+[v sprintf@f f `*.24DCuc  1 p 1 77 ]
 "533
 [v sprintf@sp sp `*.4uc  1 a 1 8 ]
 "1541
@@ -645,7 +666,7 @@ ASSIGNMENT_7 6
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwmod@counter counter `uc  1 a 1 6 ]
+[v ___lwmod@counter counter `uc  1 a 1 11 ]
 "6
 [v ___lwmod@divisor divisor `ui  1 p 2 7 ]
 [v ___lwmod@dividend dividend `ui  1 p 2 9 ]
@@ -690,14 +711,14 @@ ASSIGNMENT_7 6
 {
 [v Lcd_Set_Cursor@raw raw `uc  1 a 1 wreg ]
 "46
-[v Lcd_Set_Cursor@temp temp `uc  1 a 1 7 ]
-[v Lcd_Set_Cursor@y y `uc  1 a 1 6 ]
-[v Lcd_Set_Cursor@z z `uc  1 a 1 5 ]
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 8 ]
+[v Lcd_Set_Cursor@y y `uc  1 a 1 7 ]
+[v Lcd_Set_Cursor@z z `uc  1 a 1 6 ]
 "45
 [v Lcd_Set_Cursor@raw raw `uc  1 a 1 wreg ]
-[v Lcd_Set_Cursor@column column `uc  1 p 1 1 ]
+[v Lcd_Set_Cursor@column column `uc  1 p 1 2 ]
 "47
-[v Lcd_Set_Cursor@raw raw `uc  1 a 1 4 ]
+[v Lcd_Set_Cursor@raw raw `uc  1 a 1 5 ]
 "60
 } 0
 "10 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\SYST_Init.c
@@ -775,7 +796,7 @@ ASSIGNMENT_7 6
 {
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
-[v Lcd_Cmd@a a `uc  1 a 1 0 ]
+[v Lcd_Cmd@a a `uc  1 a 1 5 ]
 "38
 } 0
 "10
@@ -789,15 +810,15 @@ ASSIGNMENT_7 6
 "10 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\interrupt_Init.c
 [v _Interrupt_Init Interrupt_Init `(v  1 e 1 0 ]
 {
-"20
+"23
 } 0
 "13 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\adc_Init.c
 [v _ADC_Init ADC_Init `(v  1 e 1 0 ]
 {
 "22
 } 0
-"22 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\interrupt_Init.c
+"25 F:\WORK\Bernard\YALA_8bit_Demo_Code.X\interrupt_Init.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"36
+"39
 } 0
