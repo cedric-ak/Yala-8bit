@@ -3,14 +3,14 @@ Microchip MPLAB XC8 Compiler V1.45 ()
 Linker command line:
 
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
-  -h+dist/default/production\YALA_8bit_Demo_Code.X.production.sym \
-  --cmf=dist/default/production\YALA_8bit_Demo_Code.X.production.cmf -z \
-  -Q16F887 -oC:\Users\CEDRIC\AppData\Local\Temp\s40.2 \
-  -Mdist/default/production/YALA_8bit_Demo_Code.X.production.map -E1 \
-  -ver=XC8 -ASTACK=0110h-016fh -pstack=STACK -ACODE=00h-07FFhx4 \
-  -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
-  -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh \
-  -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
+  -h+dist/default/production\YALA_8bit_API.X.production.sym \
+  --cmf=dist/default/production\YALA_8bit_API.X.production.cmf -z -Q16F887 \
+  -oC:\Users\CEDRIC\AppData\Local\Temp\su9s.2 \
+  -Mdist/default/production/YALA_8bit_API.X.production.map -E1 -ver=XC8 \
+  -ASTACK=0110h-016fh -pstack=STACK -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh \
+  -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 \
+  -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
+  -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
   -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
   -AABS1=020h-07Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh -ASFR0=00h-01Fh \
   -ASFR1=080h-09Fh -ASFR2=0100h-010Fh -ASFR3=0180h-018Fh \
@@ -18,8 +18,8 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\CEDRIC\AppData\Local\Temp\s40.obj \
-  dist/default/production\YALA_8bit_Demo_Code.X.production.obj 
+  -DENTRY=2 -k C:\Users\CEDRIC\AppData\Local\Temp\su9s.obj \
+  dist/default/production\YALA_8bit_API.X.production.obj 
 
 Object code version is 3.11
 
@@ -28,11 +28,11 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\CEDRIC\AppData\Local\Temp\s40.obj
+C:\Users\CEDRIC\AppData\Local\Temp\su9s.obj
                 end_init                             12       12        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2     400E       0
-dist/default/production\YALA_8bit_Demo_Code.X.production.obj
+dist/default/production\YALA_8bit_API.X.production.obj
                 cinit                                15       15       20        8       0
                 intentry                              4        4        E        8       0
                 text37                              C79      C79       2B     18F2       0
@@ -632,7 +632,7 @@ _data_TransferComplete      bssCOMMON    0078
 _dpowers                    strings      0810
 _g_state                    bssCOMMON    0079
 _isdigit                    text10       0BCE
-_isdigit$1446               cstackCOMMON 0074
+_isdigit$1444               cstackCOMMON 0074
 _main                       maintext     0CCF
 _pinManager                 text18       0CA4
 _rawData                    bssBANK1     00DC
@@ -684,7 +684,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  2   59[None  ] int 
+                  2   74[None  ] int 
  Registers used:
 		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
  Tracked objects:

@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Assignement_One.c main.c pin_Manager.c SYST_Init.c lcd_Config.c adc_Init.c interrupt_Init.c pwm_Init.c _25LC160B_EEPROM.c spi_Init.c uart_Init.c timer_Init.c Internal_EEPROM.c Assignement_Two.c
+SOURCEFILES_QUOTED_IF_SPACED=Assignement_One.c Assignement_Two.c main.c pin_Manager.c SYST_Init.c lcd_Config.c adc_Init.c interrupt_Init.c pwm_Init.c _25LC160B_EEPROM.c spi_Init.c uart_Init.c timer_Init.c Internal_EEPROM.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Assignement_One.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/pin_Manager.p1 ${OBJECTDIR}/SYST_Init.p1 ${OBJECTDIR}/lcd_Config.p1 ${OBJECTDIR}/adc_Init.p1 ${OBJECTDIR}/interrupt_Init.p1 ${OBJECTDIR}/pwm_Init.p1 ${OBJECTDIR}/_25LC160B_EEPROM.p1 ${OBJECTDIR}/spi_Init.p1 ${OBJECTDIR}/uart_Init.p1 ${OBJECTDIR}/timer_Init.p1 ${OBJECTDIR}/Internal_EEPROM.p1 ${OBJECTDIR}/Assignement_Two.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/Assignement_One.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/pin_Manager.p1.d ${OBJECTDIR}/SYST_Init.p1.d ${OBJECTDIR}/lcd_Config.p1.d ${OBJECTDIR}/adc_Init.p1.d ${OBJECTDIR}/interrupt_Init.p1.d ${OBJECTDIR}/pwm_Init.p1.d ${OBJECTDIR}/_25LC160B_EEPROM.p1.d ${OBJECTDIR}/spi_Init.p1.d ${OBJECTDIR}/uart_Init.p1.d ${OBJECTDIR}/timer_Init.p1.d ${OBJECTDIR}/Internal_EEPROM.p1.d ${OBJECTDIR}/Assignement_Two.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Assignement_One.p1 ${OBJECTDIR}/Assignement_Two.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/pin_Manager.p1 ${OBJECTDIR}/SYST_Init.p1 ${OBJECTDIR}/lcd_Config.p1 ${OBJECTDIR}/adc_Init.p1 ${OBJECTDIR}/interrupt_Init.p1 ${OBJECTDIR}/pwm_Init.p1 ${OBJECTDIR}/_25LC160B_EEPROM.p1 ${OBJECTDIR}/spi_Init.p1 ${OBJECTDIR}/uart_Init.p1 ${OBJECTDIR}/timer_Init.p1 ${OBJECTDIR}/Internal_EEPROM.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/Assignement_One.p1.d ${OBJECTDIR}/Assignement_Two.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/pin_Manager.p1.d ${OBJECTDIR}/SYST_Init.p1.d ${OBJECTDIR}/lcd_Config.p1.d ${OBJECTDIR}/adc_Init.p1.d ${OBJECTDIR}/interrupt_Init.p1.d ${OBJECTDIR}/pwm_Init.p1.d ${OBJECTDIR}/_25LC160B_EEPROM.p1.d ${OBJECTDIR}/spi_Init.p1.d ${OBJECTDIR}/uart_Init.p1.d ${OBJECTDIR}/timer_Init.p1.d ${OBJECTDIR}/Internal_EEPROM.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Assignement_One.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/pin_Manager.p1 ${OBJECTDIR}/SYST_Init.p1 ${OBJECTDIR}/lcd_Config.p1 ${OBJECTDIR}/adc_Init.p1 ${OBJECTDIR}/interrupt_Init.p1 ${OBJECTDIR}/pwm_Init.p1 ${OBJECTDIR}/_25LC160B_EEPROM.p1 ${OBJECTDIR}/spi_Init.p1 ${OBJECTDIR}/uart_Init.p1 ${OBJECTDIR}/timer_Init.p1 ${OBJECTDIR}/Internal_EEPROM.p1 ${OBJECTDIR}/Assignement_Two.p1
+OBJECTFILES=${OBJECTDIR}/Assignement_One.p1 ${OBJECTDIR}/Assignement_Two.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/pin_Manager.p1 ${OBJECTDIR}/SYST_Init.p1 ${OBJECTDIR}/lcd_Config.p1 ${OBJECTDIR}/adc_Init.p1 ${OBJECTDIR}/interrupt_Init.p1 ${OBJECTDIR}/pwm_Init.p1 ${OBJECTDIR}/_25LC160B_EEPROM.p1 ${OBJECTDIR}/spi_Init.p1 ${OBJECTDIR}/uart_Init.p1 ${OBJECTDIR}/timer_Init.p1 ${OBJECTDIR}/Internal_EEPROM.p1
 
 # Source Files
-SOURCEFILES=Assignement_One.c main.c pin_Manager.c SYST_Init.c lcd_Config.c adc_Init.c interrupt_Init.c pwm_Init.c _25LC160B_EEPROM.c spi_Init.c uart_Init.c timer_Init.c Internal_EEPROM.c Assignement_Two.c
+SOURCEFILES=Assignement_One.c Assignement_Two.c main.c pin_Manager.c SYST_Init.c lcd_Config.c adc_Init.c interrupt_Init.c pwm_Init.c _25LC160B_EEPROM.c spi_Init.c uart_Init.c timer_Init.c Internal_EEPROM.c
 
 
 CFLAGS=
@@ -87,7 +87,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=16F887
 # ------------------------------------------------------------------------------------
@@ -100,6 +100,14 @@ ${OBJECTDIR}/Assignement_One.p1: Assignement_One.c  nbproject/Makefile-${CND_CON
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_One.p1 Assignement_One.c 
 	@-${MV} ${OBJECTDIR}/Assignement_One.d ${OBJECTDIR}/Assignement_One.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Assignement_One.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/Assignement_Two.p1: Assignement_Two.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Assignement_Two.p1.d 
+	@${RM} ${OBJECTDIR}/Assignement_Two.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_Two.p1 Assignement_Two.c 
+	@-${MV} ${OBJECTDIR}/Assignement_Two.d ${OBJECTDIR}/Assignement_Two.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Assignement_Two.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -197,14 +205,6 @@ ${OBJECTDIR}/Internal_EEPROM.p1: Internal_EEPROM.c  nbproject/Makefile-${CND_CON
 	@-${MV} ${OBJECTDIR}/Internal_EEPROM.d ${OBJECTDIR}/Internal_EEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Internal_EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/Assignement_Two.p1: Assignement_Two.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Assignement_Two.p1.d 
-	@${RM} ${OBJECTDIR}/Assignement_Two.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=pickit3  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_Two.p1 Assignement_Two.c 
-	@-${MV} ${OBJECTDIR}/Assignement_Two.d ${OBJECTDIR}/Assignement_Two.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Assignement_Two.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
 ${OBJECTDIR}/Assignement_One.p1: Assignement_One.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -213,6 +213,14 @@ ${OBJECTDIR}/Assignement_One.p1: Assignement_One.c  nbproject/Makefile-${CND_CON
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_One.p1 Assignement_One.c 
 	@-${MV} ${OBJECTDIR}/Assignement_One.d ${OBJECTDIR}/Assignement_One.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Assignement_One.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/Assignement_Two.p1: Assignement_Two.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Assignement_Two.p1.d 
+	@${RM} ${OBJECTDIR}/Assignement_Two.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_Two.p1 Assignement_Two.c 
+	@-${MV} ${OBJECTDIR}/Assignement_Two.d ${OBJECTDIR}/Assignement_Two.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Assignement_Two.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -310,14 +318,6 @@ ${OBJECTDIR}/Internal_EEPROM.p1: Internal_EEPROM.c  nbproject/Makefile-${CND_CON
 	@-${MV} ${OBJECTDIR}/Internal_EEPROM.d ${OBJECTDIR}/Internal_EEPROM.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Internal_EEPROM.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/Assignement_Two.p1: Assignement_Two.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Assignement_Two.p1.d 
-	@${RM} ${OBJECTDIR}/Assignement_Two.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/Assignement_Two.p1 Assignement_Two.c 
-	@-${MV} ${OBJECTDIR}/Assignement_Two.d ${OBJECTDIR}/Assignement_Two.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Assignement_Two.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -329,15 +329,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=pickit3  -DXPRJ_default=$(CND_CONF)  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     --rom=default,-1f00-1ffe --ram=default,-0-0,-70-70,-80-80,-f0-f0,-100-100,-170-170,-180-180,-1e5-1f0  $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.hex 
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=pickit3  -DXPRJ_default=$(CND_CONF)  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     --rom=default,-1f00-1ffe --ram=default,-0-0,-70-70,-80-80,-f0-f0,-100-100,-170-170,-180-180,-1e5-1f0  $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.hex 
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 

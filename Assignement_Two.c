@@ -8,14 +8,11 @@
 #include "myDefinition.h"
 
 void Ass_2(void);
-extern char *userAdmin;
+char Admin_UserName[] = "YalaTech";
+char Admin_PassWord[] = "012345";
 /*
  * 
  */
 void Ass_2(void){
-  
-    
-    
-    
     return;
 }

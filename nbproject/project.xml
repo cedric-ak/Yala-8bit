@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>YALA_8bit_Demo_Code</name>
+            <name>YALA_8bit_API</name>
             <creation-uuid>67886da8-2e3a-4ba1-b9bd-07842d89fa9f</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

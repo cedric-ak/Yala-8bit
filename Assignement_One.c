@@ -9,14 +9,14 @@
 
 uint32_t *dataBuffer;
 bool data_TransferComplete;
-char *student_Number = "201147296";
-char *student_Name   = "Akilimali";
+char student_Number[] = "20114xxxx";
+char student_Name[]   = "YalaTech";
 
 void ASS_1(void){
 
     for (int bSize = 0; !PIR1bits.RCIF; bSize++) { //continue reading until last character complete
         dataBuffer[bSize] = UART_Read();
-        if (!PIR1bits.RCIF == 1)
+        if (PIR1bits.RCIF)
             data_TransferComplete = true;
     }
 

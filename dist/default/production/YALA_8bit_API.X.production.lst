@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Mon Jul 22 14:33:04 2019
+                                                                                               Wed Jul 24 18:34:48 2019
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	16F887
@@ -1511,28 +1511,28 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1497  0070                     ?_temp_Display:	
   1498                           ; 1 bytes @ 0x0
   1499                           
-  1500  0070                     ?_Ass_2:	
+  1500  0070                     ?_Oscillator_Init:	
   1501                           ; 1 bytes @ 0x0
   1502                           
-  1503  0070                     ?_Oscillator_Init:	
+  1503  0070                     ?_Interrupt_Init:	
   1504                           ; 1 bytes @ 0x0
   1505                           
-  1506  0070                     ?_Interrupt_Init:	
+  1506  0070                     ?_Lcd_Init:	
   1507                           ; 1 bytes @ 0x0
   1508                           
-  1509  0070                     ?_Lcd_Init:	
+  1509  0070                     ?_ADC_Init:	
   1510                           ; 1 bytes @ 0x0
   1511                           
-  1512  0070                     ?_ADC_Init:	
+  1512  0070                     ?_TMR0_Init:	
   1513                           ; 1 bytes @ 0x0
   1514                           
-  1515  0070                     ?_TMR0_Init:	
+  1515  0070                     ?_SPI_Init:	
   1516                           ; 1 bytes @ 0x0
   1517                           
-  1518  0070                     ?_SPI_Init:	
+  1518  0070                     ?_ASS_1:	
   1519                           ; 1 bytes @ 0x0
   1520                           
-  1521  0070                     ?_ASS_1:	
+  1521  0070                     ?_Ass_2:	
   1522                           ; 1 bytes @ 0x0
   1523                           
   1524  0070                     ?_pinManager:	
@@ -1562,26 +1562,26 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1548                           
   1549                           ; 2 bytes @ 0x0
   1550  0070                     	ds	4
-  1551  0074                     ??_Ass_2:	
-  1552  0074                     ??_Oscillator_Init:	
+  1551  0074                     ??_Oscillator_Init:	
+  1552  0074                     ??_Interrupt_Init:	
   1553                           ; 1 bytes @ 0x4
   1554                           
-  1555  0074                     ??_Interrupt_Init:	
+  1555  0074                     ??_ADC_Init:	
   1556                           ; 1 bytes @ 0x4
   1557                           
-  1558  0074                     ??_ADC_Init:	
+  1558  0074                     ??_TMR0_Init:	
   1559                           ; 1 bytes @ 0x4
   1560                           
-  1561  0074                     ??_TMR0_Init:	
+  1561  0074                     ??_SPI_Init:	
   1562                           ; 1 bytes @ 0x4
   1563                           
-  1564  0074                     ??_SPI_Init:	
+  1564  0074                     ??_isdigit:	
   1565                           ; 1 bytes @ 0x4
   1566                           
-  1567  0074                     ??_isdigit:	
+  1567  0074                     ??___ftpack:	
   1568                           ; 1 bytes @ 0x4
   1569                           
-  1570  0074                     ??___ftpack:	
+  1570  0074                     ??_Ass_2:	
   1571                           ; 1 bytes @ 0x4
   1572                           
   1573  0074                     ??_pinManager:	
@@ -1608,7 +1608,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1594  0074                     Lcd_Port@a:	
   1595                           ; 2 bytes @ 0x4
   1596                           
-  1597  0074                     _isdigit$1446:	
+  1597  0074                     _isdigit$1444:	
   1598                           ; 1 bytes @ 0x4
   1599                           
   1600  0074                     UART_Write_char@iData:	
@@ -1994,7 +1994,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1980 ;; Auto vars:     Size  Location     Type
   1981 ;;		None
   1982 ;; Return value:  Size  Location     Type
-  1983 ;;                  2   59[None  ] int 
+  1983 ;;                  2   74[None  ] int 
   1984 ;; Registers used:
   1985 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
   1986 ;; Tracked objects:
@@ -2288,11 +2288,11 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   2274  02E9  1283               	bcf	3,5	;RP0=0, select bank0
   2275  02EA  1303               	bcf	3,6	;RP1=0, select bank0
   2276  02EB  149F               	bsf	31,1	;volatile
-  2277  02EC                     l237:	
+  2277  02EC                     l252:	
   2278                           ;adc_Init.c: 27: while(!PIR1bits.ADIF);
   2279                           
   2280  02EC  1F0C               	btfss	12,6	;volatile
-  2281  02ED  2AEC               	goto	l237
+  2281  02ED  2AEC               	goto	l252
   2282                           
   2283                           ;adc_Init.c: 28: adc.reading[0] = ADRESL;
   2284  02EE  1683               	bsf	3,5	;RP0=1, select bank1
@@ -4360,7 +4360,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4346                           ; Regs used in _isdigit: [wreg+status,2+status,0]
   4347                           ;isdigit@c stored from wreg
   4348  0BCE  00F5               	movwf	isdigit@c
-  4349  0BCF  01F4               	clrf	_isdigit$1446
+  4349  0BCF  01F4               	clrf	_isdigit$1444
   4350  0BD0  303A               	movlw	58
   4351  0BD1  0275               	subwf	isdigit@c,w
   4352  0BD2  1803               	skipnc
@@ -4369,10 +4369,10 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4355  0BD5  0275               	subwf	isdigit@c,w
   4356  0BD6  1C03               	skipc
   4357  0BD7  2BDA               	goto	l1895
-  4358  0BD8  01F4               	clrf	_isdigit$1446
-  4359  0BD9  0AF4               	incf	_isdigit$1446,f
+  4358  0BD8  01F4               	clrf	_isdigit$1444
+  4359  0BD9  0AF4               	incf	_isdigit$1444,f
   4360  0BDA                     l1895:	
-  4361  0BDA  0C74               	rrf	_isdigit$1446,w
+  4361  0BDA  0C74               	rrf	_isdigit$1444,w
   4362  0BDB  0008               	return
   4363  0BDC                     __end_of_isdigit:	
   4364                           
@@ -6361,58 +6361,58 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   6347                           
   6348                           ;lcd_Config.c: 11: if (a & 1)
   6349  0C3D  1C74               	btfss	Lcd_Port@a,0
-  6350  0C3E  2C43               	goto	l159
+  6350  0C3E  2C43               	goto	l174
   6351                           
   6352                           ;lcd_Config.c: 12: PORTBbits.RB3 = 1;
   6353  0C3F  1283               	bcf	3,5	;RP0=0, select bank0
   6354  0C40  1303               	bcf	3,6	;RP1=0, select bank0
   6355  0C41  1586               	bsf	6,3	;volatile
-  6356  0C42  2C46               	goto	l160
-  6357  0C43                     l159:	
+  6356  0C42  2C46               	goto	l175
+  6357  0C43                     l174:	
   6358                           
   6359                           ;lcd_Config.c: 13: else
   6360                           ;lcd_Config.c: 14: PORTBbits.RB3 = 0;
   6361  0C43  1283               	bcf	3,5	;RP0=0, select bank0
   6362  0C44  1303               	bcf	3,6	;RP1=0, select bank0
   6363  0C45  1186               	bcf	6,3	;volatile
-  6364  0C46                     l160:	
+  6364  0C46                     l175:	
   6365                           
   6366                           ;lcd_Config.c: 16: if (a & 2)
   6367  0C46  1CF4               	btfss	Lcd_Port@a,1
-  6368  0C47  2C4A               	goto	l161
+  6368  0C47  2C4A               	goto	l176
   6369                           
   6370                           ;lcd_Config.c: 17: PORTBbits.RB2 = 1;
   6371  0C48  1506               	bsf	6,2	;volatile
-  6372  0C49  2C4B               	goto	l162
-  6373  0C4A                     l161:	
+  6372  0C49  2C4B               	goto	l177
+  6373  0C4A                     l176:	
   6374                           
   6375                           ;lcd_Config.c: 18: else
   6376                           ;lcd_Config.c: 19: PORTBbits.RB2 = 0;
   6377  0C4A  1106               	bcf	6,2	;volatile
-  6378  0C4B                     l162:	
+  6378  0C4B                     l177:	
   6379                           
   6380                           ;lcd_Config.c: 21: if (a & 4)
   6381  0C4B  1D74               	btfss	Lcd_Port@a,2
-  6382  0C4C  2C4F               	goto	l163
+  6382  0C4C  2C4F               	goto	l178
   6383                           
   6384                           ;lcd_Config.c: 22: PORTBbits.RB1 = 1;
   6385  0C4D  1486               	bsf	6,1	;volatile
-  6386  0C4E  2C50               	goto	l164
-  6387  0C4F                     l163:	
+  6386  0C4E  2C50               	goto	l179
+  6387  0C4F                     l178:	
   6388                           
   6389                           ;lcd_Config.c: 23: else
   6390                           ;lcd_Config.c: 24: PORTBbits.RB1 = 0;
   6391  0C4F  1086               	bcf	6,1	;volatile
-  6392  0C50                     l164:	
+  6392  0C50                     l179:	
   6393                           
   6394                           ;lcd_Config.c: 26: if (a & 8)
   6395  0C50  1DF4               	btfss	Lcd_Port@a,3
-  6396  0C51  2C54               	goto	l165
+  6396  0C51  2C54               	goto	l180
   6397                           
   6398                           ;lcd_Config.c: 27: PORTBbits.RB0 = 1;
   6399  0C52  1406               	bsf	6,0	;volatile
   6400  0C53  0008               	return
-  6401  0C54                     l165:	
+  6401  0C54                     l180:	
   6402                           
   6403                           ;lcd_Config.c: 28: else
   6404                           ;lcd_Config.c: 29: PORTBbits.RB0 = 0;
@@ -6909,7 +6909,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   6895                           
   6896                           ;psect for function _UART_Write_char
   6897  0BAA                     _UART_Write_char:	
-  6898  0BAA                     l386:	
+  6898  0BAA                     l401:	
   6899                           ;uart_Init.c: 28: while(!TXSTAbits.TRMT);
   6900                           
   6901                           ;incstack = 0
@@ -6918,7 +6918,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   6904  0BAA  1683               	bsf	3,5	;RP0=1, select bank1
   6905  0BAB  1303               	bcf	3,6	;RP1=0, select bank1
   6906  0BAC  1C98               	btfss	24,1	;volatile
-  6907  0BAD  2BAA               	goto	l386
+  6907  0BAD  2BAA               	goto	l401
   6908                           
   6909                           ;uart_Init.c: 29: TXREG = iData;
   6910  0BAE  0874               	movf	UART_Write_char@iData,w
@@ -7025,55 +7025,55 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   7011  0C79  1683               	bsf	3,5	;RP0=1, select bank1
   7012  0C7A  1303               	bcf	3,6	;RP1=0, select bank1
   7013  0C7B  1E8C               	btfss	12,5	;volatile
-  7014  0C7C  2C82               	goto	i1l268
+  7014  0C7C  2C82               	goto	i1l283
   7015  0C7D  1283               	bcf	3,5	;RP0=0, select bank0
   7016  0C7E  1303               	bcf	3,6	;RP1=0, select bank0
   7017  0C7F  1E8C               	btfss	12,5	;volatile
-  7018  0C80  2C82               	goto	i1l268
+  7018  0C80  2C82               	goto	i1l283
   7019                           
   7020                           ;interrupt_Init.c: 27: PIR1bits.RCIF = 0;
   7021  0C81  128C               	bcf	12,5	;volatile
-  7022  0C82                     i1l268:	
+  7022  0C82                     i1l283:	
   7023                           
   7024                           ;interrupt_Init.c: 28: }
   7025                           ;interrupt_Init.c: 29: if (PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1) {
   7026  0C82  1683               	bsf	3,5	;RP0=1, select bank1
   7027  0C83  1303               	bcf	3,6	;RP1=0, select bank1
   7028  0C84  1F0C               	btfss	12,6	;volatile
-  7029  0C85  2C8B               	goto	i1l269
+  7029  0C85  2C8B               	goto	i1l284
   7030  0C86  1283               	bcf	3,5	;RP0=0, select bank0
   7031  0C87  1303               	bcf	3,6	;RP1=0, select bank0
   7032  0C88  1F0C               	btfss	12,6	;volatile
-  7033  0C89  2C8B               	goto	i1l269
+  7033  0C89  2C8B               	goto	i1l284
   7034                           
   7035                           ;interrupt_Init.c: 30: PIR1bits.ADIF = 0;
   7036  0C8A  130C               	bcf	12,6	;volatile
-  7037  0C8B                     i1l269:	
+  7037  0C8B                     i1l284:	
   7038                           
   7039                           ;interrupt_Init.c: 31: }
   7040                           ;interrupt_Init.c: 32: if (INTCONbits.T0IE == 1 && INTCONbits.T0IF == 1) {
   7041  0C8B  1A8B               	btfsc	11,5	;volatile
   7042  0C8C  1D0B               	btfss	11,2	;volatile
-  7043  0C8D  2C8F               	goto	i1l270
+  7043  0C8D  2C8F               	goto	i1l285
   7044                           
   7045                           ;interrupt_Init.c: 33: INTCONbits.T0IF = 0;
   7046  0C8E  110B               	bcf	11,2	;volatile
-  7047  0C8F                     i1l270:	
+  7047  0C8F                     i1l285:	
   7048                           
   7049                           ;interrupt_Init.c: 34: }
   7050                           ;interrupt_Init.c: 35: if( PIE1bits.SSPIE == 1 && PIR1bits.SSPIF == 1){
   7051  0C8F  1683               	bsf	3,5	;RP0=1, select bank1
   7052  0C90  1303               	bcf	3,6	;RP1=0, select bank1
   7053  0C91  1D8C               	btfss	12,3	;volatile
-  7054  0C92  2C98               	goto	i1l272
+  7054  0C92  2C98               	goto	i1l287
   7055  0C93  1283               	bcf	3,5	;RP0=0, select bank0
   7056  0C94  1303               	bcf	3,6	;RP1=0, select bank0
   7057  0C95  1D8C               	btfss	12,3	;volatile
-  7058  0C96  2C98               	goto	i1l272
+  7058  0C96  2C98               	goto	i1l287
   7059                           
   7060                           ;interrupt_Init.c: 36: PIR1bits.SSPIF = 0;
   7061  0C97  118C               	bcf	12,3	;volatile
-  7062  0C98                     i1l272:	
+  7062  0C98                     i1l287:	
   7063  0C98  0873               	movf	??_ISR+3,w
   7064  0C99  1283               	bcf	3,5	;RP0=0, select bank0
   7065  0C9A  00FF               	movwf	127
@@ -7623,16 +7623,16 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Mon Jul 22 14:33:04 2019
+Symbol Table                                                                                   Wed Jul 24 18:34:48 2019
 
           ??_Interrupt_Init 0074      UART_Write_String@cText 0020      UART_Write_String@iSize 0026  
     __size_of_PWM_DutyCycle 006F                           pc 0002                 __CFG_CP$OFF 0000  
                         l32 06F4                          fsr 0004         ___wmul@multiplicand 0022  
 __size_of_UART_Write_String 0036                ___ftadd@exp1 0055                ___ftadd@exp2 0054  
-               __CFG_LVP$ON 0000                ___ftadd@sign 0053                         l160 0C46  
-                       l161 0C4A                         l162 0C4B                         l163 0C4F  
-                       l164 0C50                         l165 0C54                         l237 02EC  
-                       l159 0C43                         l386 0BAA                         l493 012C  
+               __CFG_LVP$ON 0000                ___ftadd@sign 0053                         l401 0BAA  
+                       l180 0C54                         l252 02EC                         l174 0C43  
+                       l175 0C46                         l176 0C4A                         l177 0C4B  
+                       l178 0C4F                         l179 0C50                         l493 012C  
                        l840 05C5                         l588 0C62                         l756 069B  
                        l780 027D                         l757 06A3                         l749 0686  
                        _PR2 0092                __CFG_CPD$OFF 0000                         _ISR 0C79  
@@ -7695,8 +7695,8 @@ __size_of_UART_Write_String 0036                ___ftadd@exp1 0055              
                      ?_main 0070                       _EEADR 010D             __end_of___ftadd 02DE  
              __CFG_WDTE$OFF 0000             __end_of___ftdiv 0551             __end_of___lldiv 07E6  
            __end_of___ftmul 0499             __end_of___fttol 05DF                       _ASS_1 06BC  
-           __end_of___lwdiv 0E06                       i1l270 0C8F                       i1l272 0C98  
-           __end_of___lwmod 0D5B                       i1l268 0C82                       i1l269 0C8B  
+           __end_of___lwdiv 0E06             __end_of___lwmod 0D5B                       i1l283 0C82  
+                     i1l284 0C8B                       i1l285 0C8F                       i1l287 0C98  
                      _RCREG 001A                       _SPBRG 0099                       _PORTA 0005  
                      _PORTB 0006                       _PORTC 0007                       _PORTD 0008  
                      _PORTE 0009     __size_of_Lcd_Set_Cursor 0052                       _TRISB 0086  
@@ -7770,7 +7770,7 @@ __size_of_UART_Write_String 0036                ___ftadd@exp1 0055              
       __end_of_temp_Display 1000                  ?_Lcd_write 0023      temp_Measurement@sample 0069  
             _Interrupt_Init 0BDC           __size_of___ftpack 006E                 __pbssCOMMON 0077  
                  ___latbits 0002           __size_of___lwtoft 0018               __pcstackBANK0 0020  
-             __pcstackBANK1 00CD       __end_of_PWM_DutyCycle 064E                _isdigit$1446 0074  
+             __pcstackBANK1 00CD       __end_of_PWM_DutyCycle 064E                _isdigit$1444 0074  
                   ?_Lcd_Cmd 0070                 sprintf@flag 00D2                 sprintf@prec 00D1  
        __size_of_pinManager 002B            ___lwdiv@dividend 0022            ??_Lcd_Set_Cursor 0022  
                   ?___ftadd 0049                    ?___ftdiv 0039                    ?___lldiv 002C  

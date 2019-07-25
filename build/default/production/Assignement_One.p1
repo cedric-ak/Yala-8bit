@@ -1740,17 +1740,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _data_TransferComplete `uc ~T0 @X0 1 e ]
 [; ;Assignement_One.c: 11: bool data_TransferComplete;
 "12
-[v _student_Number `*uc ~T0 @X0 1 e ]
+[v _student_Number `uc ~T0 @X0 -> 0 `x e ]
 [i _student_Number
--> :s 1C `*uc
+:U ..
+-> 50 `c
+-> 48 `c
+-> 49 `c
+-> 49 `c
+-> 52 `c
+-> 120 `c
+-> 120 `c
+-> 120 `c
+-> 120 `c
+-> 0 `c
+..
 ]
-[; ;Assignement_One.c: 12: char *student_Number = "201147296";
+[; ;Assignement_One.c: 12: char student_Number[] = "20114xxxx";
 "13
-[v _student_Name `*uc ~T0 @X0 1 e ]
+[v _student_Name `uc ~T0 @X0 -> 0 `x e ]
 [i _student_Name
--> :s 2C `*uc
+:U ..
+-> 89 `c
+-> 97 `c
+-> 108 `c
+-> 97 `c
+-> 84 `c
+-> 101 `c
+-> 99 `c
+-> 104 `c
+-> 0 `c
+..
 ]
-[; ;Assignement_One.c: 13: char *student_Name = "Akilimali";
+[; ;Assignement_One.c: 13: char student_Name[] = "YalaTech";
 "15
 [v _ASS_1 `(v ~T0 @X0 1 ef ]
 {
@@ -1768,9 +1789,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Assignement_One.c: 18: dataBuffer[bSize] = UART_Read();
 "18
 [e = *U + _dataBuffer * -> _bSize `x -> -> # *U _dataBuffer `i `x -> ( _UART_Read ..  `ul ]
-[; ;Assignement_One.c: 19: if (!PIR1bits.RCIF == 1)
+[; ;Assignement_One.c: 19: if (PIR1bits.RCIF)
 "19
-[e $ ! == -> ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i `i -> 1 `i 149  ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 149  ]
 [; ;Assignement_One.c: 20: data_TransferComplete = 1;
 "20
 [e = _data_TransferComplete -> -> 1 `i `uc ]
@@ -1820,5 +1841,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 "29
 [e :UE 144 ]
 }
-[a 2C 65 107 105 108 105 109 97 108 105 0 ]
-[a 1C 50 48 49 49 52 55 50 57 54 0 ]

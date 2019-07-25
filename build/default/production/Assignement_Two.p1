@@ -1700,17 +1700,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;myDefinition.h: 63: t_Application g_state = ASSIGNMENT_1;
 [; ;Assignement_Two.c: 10: void Ass_2(void);
-[; ;Assignement_Two.c: 11: extern char *userAdmin;
-"15 Assignement_Two.c
+"11 Assignement_Two.c
+[v _Admin_UserName `uc ~T0 @X0 -> 0 `x e ]
+[i _Admin_UserName
+:U ..
+-> 89 `c
+-> 97 `c
+-> 108 `c
+-> 97 `c
+-> 84 `c
+-> 101 `c
+-> 99 `c
+-> 104 `c
+-> 0 `c
+..
+]
+[; ;Assignement_Two.c: 11: char Admin_UserName[] = "YalaTech";
+"12
+[v _Admin_PassWord `uc ~T0 @X0 -> 0 `x e ]
+[i _Admin_PassWord
+:U ..
+-> 48 `c
+-> 49 `c
+-> 50 `c
+-> 51 `c
+-> 52 `c
+-> 53 `c
+-> 0 `c
+..
+]
+[; ;Assignement_Two.c: 12: char Admin_PassWord[] = "012345";
+"16
 [v _Ass_2 `(v ~T0 @X0 1 ef ]
 {
-[; ;Assignement_Two.c: 15: void Ass_2(void){
+[; ;Assignement_Two.c: 16: void Ass_2(void){
 [e :U _Ass_2 ]
 [f ]
-[; ;Assignement_Two.c: 20: return;
-"20
-[e $UE 144  ]
-[; ;Assignement_Two.c: 21: }
+[; ;Assignement_Two.c: 21: return;
 "21
+[e $UE 144  ]
+[; ;Assignement_Two.c: 22: }
+"22
 [e :UE 144 ]
 }

@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=YALA_8bit_Demo_Code.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=yala8bitdemocode.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=YALA_8bit_API.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=yala8bitapi.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/yala8bitdemocode.x/bin
+makeDirectory ${TMPDIR}/yala8bitapi.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/yala8bitdemocode.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/yala8bitapi.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/yala8bitdemocode.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/yala8bitapi.x.tar *
 checkReturnCode
 
 # Cleanup
