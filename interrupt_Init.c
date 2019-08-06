@@ -9,12 +9,12 @@
 
 void Interrupt_Init(void) {
 
-    INTCONbits.GIE = set;  //enable global Interrupt
-    INTCONbits.PEIE = set; //enable peripheral interrupt
+    INTCONbits.GIE  = set;  //enable global Interrupt
+    INTCONbits.PEIE = set;  //enable peripheral interrupt
 
-    PIE1bits.ADIE = set;   //enable ADC (Analog to Digital converter) interrupt
-    PIR1bits.ADIF = clear; //clear ADC interrupt flag 
-    
+//    PIE1bits.ADIE = set;   //enable ADC (Analog to Digital converter) interrupt
+//    PIR1bits.ADIF = clear; //clear ADC interrupt flag 
+//    
     PIE1bits.RCIE = set;   //EUSART receive interrupt enabled
     PIR1bits.RCIF = clear; //clear EUSART receive interrupt
     
@@ -23,17 +23,14 @@ void Interrupt_Init(void) {
 }
 
 void interrupt ISR(void) {
-        if(PIE1bits.RCIE == set && PIR1bits.RCIF == set){      //if received data ready or complete
-        PIR1bits.RCIF = clear;
+    if(PIE1bits.RCIE == set && PIR1bits.RCIF == set){      //if received data ready or complete
+//        PIR1bits.RCIF = clear;
     }
-    if (PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1) {         //ADC conversion is complete clear interrupt flag
-        PIR1bits.ADIF = clear;                              //clear ADC interrupt flag at completion of conversion 
-    }
-    if (INTCONbits.T0IE == set && INTCONbits.T0IF == set) { //if TMR0 interrupt flag is raised 
-        INTCONbits.T0IF = clear;                            //clear interrupt flag after instruction execute
-    }
-    if( PIE1bits.SSPIE == set && PIR1bits.SSPIF == set){   //if MSSP interrupt flag is raised 
-        PIR1bits.SSPIF = clear;                            //clear MSSP interrupt flag (SPI) after transmit or received data is complete
+//    if (PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1) {         //ADC conversion is complete clear interrupt flag
+//        PIR1bits.ADIF = clear;                              //clear ADC interrupt flag at completion of conversion 
+//    }
+    if (INTCONbits.T0IE == set && INTCONbits.T0IF == set) {   //if TMR0 interrupt flag is raised 
+        INTCONbits.T0IF = clear;                              //clear interrupt flag after instruction execute
     }
 
 }

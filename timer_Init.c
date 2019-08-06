@@ -8,7 +8,7 @@
 
 /*
  TMR0 with enabled interrupt at 10ms.
- * FOSC = 4Mhz =  _XTAL_FERQ
+ * FOSC = 8Mhz =  _XTAL_FERQ
  * Prescaler 1:64
  * TMR0 register at 100 after calculation
  * Desired interrupt time = (256 - TMR0)*1TICK
@@ -23,7 +23,7 @@ void TMR0_Init(void) {
     OPTION_REGbits.T0CS = clear;                  //internal instruction cycle clock
     OPTION_REGbits.PSA  = clear;                  //Prescaler assigned to TMR0 module
     OPTION_REGbits.PS   = 0b101;                  //Prescaler 1:64
-    TMR0 = 100;                                   //calculated value for 10ms interrupt
+    TMR0 = 57;                                    //calculated value for 10ms interrupt
 }
 
 void TMR1_Init(void){

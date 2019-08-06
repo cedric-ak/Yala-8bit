@@ -45,7 +45,9 @@ void pinManager(void) {
     EEPROM_MOSI_TRIS  = output;
     EEPROM_MISO_TRIS  = input;
     EEPROM_CS_TRIS    = output;
-    EEPROM_CLOCK_TRIS = output;       
+    EEPROM_CLOCK_TRIS = output;      
+    
+    CM2CON0bits.C2ON = clear;   //disable comparator 2
 
     /*****clear MCU IO port before process begins*/
     PORTA = clear;

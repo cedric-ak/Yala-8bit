@@ -1,10 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "45 adc_Init.h
-[u S143 `ui 1 `uc -> 2 `i ]
+[u S143 `uc 1 `uc -> 2 `i ]
 [n S143 . result reading ]
-"63 myDefinition.h
-[c E2011 0 1 2 3 4 5 6 .. ]
-[n E2011 . ASSIGNMENT_1 ASSIGNMENT_2 ASSIGNMENT_3 ASSIGNMENT_4 ASSIGNMENT_5 ASSIGNMENT_6 ASSIGNMENT_7  ]
+"62 myDefinition.h
+[c E2019 0 1 2 3 .. ]
+[n E2019 . LED_DEMO PWM_DEMO ADC_DEMO USART_DEMO  ]
 "232 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -1636,7 +1636,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 58: extern char * strichr(const char *, int);
 [; ;string.h: 59: extern char * strrchr(const char *, int);
 [; ;string.h: 60: extern char * strrichr(const char *, int);
-[; ;pin_Manager.h: 79: void pinManager(void);
+[; ;pin_Manager.h: 82: void pinManager(void);
 [; ;lcd_Config.h: 24: void Lcd_Port(char a);
 [; ;lcd_Config.h: 25: void Lcd_Cmd(char a);
 [; ;lcd_Config.h: 26: Lcd_Clear();
@@ -1647,37 +1647,98 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_Config.h: 31: void Lcd_Shift_Right();
 [; ;lcd_Config.h: 32: void Lcd_Shift_Left();
 [; ;adc_Init.h: 42: void ADC_Init(void);
-[; ;adc_Init.h: 43: uint8_t temp_Measurement(void);
+[; ;adc_Init.h: 43: uint16_t temp_Measurement(void);
 "48 adc_Init.h
 [v _adc `S143 ~T0 @X0 1 e ]
 [; ;adc_Init.h: 45: union {
-[; ;adc_Init.h: 46: uint16_t result;
+[; ;adc_Init.h: 46: uint8_t result;
 [; ;adc_Init.h: 47: char reading[2];
 [; ;adc_Init.h: 48: } adc;
-[; ;_25LC160B_EEPROM.h: 22: extern void eeprom_Write(uint8_t *iData, uint8_t iAddress);
+[; ;_25LC160B_EEPROM.h: 22: extern void eeprom_Write(uint8_t iData, uint8_t iAddress);
 [; ;_25LC160B_EEPROM.h: 23: extern void eeprom_Write_String(char *sText, uint8_t iAddress);
 [; ;_25LC160B_EEPROM.h: 24: extern uint8_t eeprom_Read(uint8_t iAddress);
 [; ;_25LC160B_EEPROM.h: 25: char eeprom_Read_String(uint16_t iAddress);
 [; ;_25LC160B_EEPROM.h: 27: extern uint8_t internal_eeprom_read(uint8_t addr);
 [; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
-[; ;uart_Init.h: 15: extern void UART_Init(uint16_t baudRate);
+[; ;uart_Init.h: 15: extern void UART_Init(uint32_t baudRate);
 [; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
 [; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t *cText);
-[; ;uart_Init.h: 18: extern uint16_t UART_Read(void);
-[; ;myDefinition.h: 31: void system_Initialize(void);
-[; ;myDefinition.h: 32: extern void Oscillator_Init(void);
-[; ;myDefinition.h: 33: extern void Interrupt_Init(void);
-[; ;myDefinition.h: 34: extern void temp_Display(void);
-"35 myDefinition.h
+[; ;uart_Init.h: 18: extern char UART_Read(void);
+[; ;uart_Init.h: 19: extern bool UART_Data_available(void);
+"15 RN4020_Bluetooth.h
+[v _CMD_mode `uc ~T0 @X0 -> 0 `x e ]
+[i _CMD_mode
+:U ..
+-> 36 `c
+-> 36 `c
+-> 36 `c
+-> 13 `c
+-> 0 `c
+..
+]
+[; ;RN4020_Bluetooth.h: 15: char CMD_mode[] = "$$$\r";
+"16
+[v _device_name `uc ~T0 @X0 -> 0 `x e ]
+[i _device_name
+:U ..
+-> 83 `c
+-> 78 `c
+-> 44 `c
+-> 89 `c
+-> 97 `c
+-> 108 `c
+-> 97 `c
+-> 32 `c
+-> 68 `c
+-> 101 `c
+-> 118 `c
+-> 105 `c
+-> 99 `c
+-> 101 `c
+-> 13 `c
+-> 0 `c
+..
+]
+[; ;RN4020_Bluetooth.h: 16: uint8_t device_name[] = "SN,Yala Device\r";
+"17
+[v _reset_To_Factory `uc ~T0 @X0 -> 0 `x e ]
+[i _reset_To_Factory
+:U ..
+-> 83 `c
+-> 70 `c
+-> 44 `c
+-> 49 `c
+-> 13 `c
+-> 0 `c
+..
+]
+[; ;RN4020_Bluetooth.h: 17: char reset_To_Factory[] ="SF,1\r";
+"18
+[v _BTH_reboot `uc ~T0 @X0 -> 0 `x e ]
+[i _BTH_reboot
+:U ..
+-> 114 `c
+-> 44 `c
+-> 49 `c
+-> 13 `c
+-> 0 `c
+..
+]
+[; ;RN4020_Bluetooth.h: 18: char BTH_reboot[] = "r,1\r";
+[; ;myDefinition.h: 32: void system_Initialize(void);
+[; ;myDefinition.h: 33: extern void Oscillator_Init(void);
+[; ;myDefinition.h: 34: extern void Interrupt_Init(void);
+[; ;myDefinition.h: 35: extern void temp_Display(void);
+"36 myDefinition.h
 [v _segment_Variable `ui ~T0 @X0 1 e ]
-[; ;myDefinition.h: 35: unsigned int segment_Variable;
-[; ;myDefinition.h: 36: extern void PWM_Init(uint32_t iFrequency);
-[; ;myDefinition.h: 37: extern void PWM_DutyCycle(uint32_t iDutyCycle);
-[; ;myDefinition.h: 38: extern void TMR0_Init(void);
-[; ;myDefinition.h: 39: extern void SPI_Init(void);
-[; ;myDefinition.h: 40: extern void SPI_MasterTransmit(uint8_t iData);
-[; ;myDefinition.h: 42: uint8_t internal_eeprom_read(uint8_t addr);
-"44
+[; ;myDefinition.h: 36: unsigned int segment_Variable;
+[; ;myDefinition.h: 37: extern void PWM_Init(uint32_t iFrequency);
+[; ;myDefinition.h: 38: extern void PWM_DutyCycle(uint32_t iDutyCycle);
+[; ;myDefinition.h: 39: extern void TMR0_Init(void);
+[; ;myDefinition.h: 40: extern void SPI_Init(void);
+[; ;myDefinition.h: 41: extern void SPI_MasterTransmit(uint8_t iData);
+[; ;myDefinition.h: 43: uint8_t internal_eeprom_read(uint8_t addr);
+"45
 [v _segment_Array `uc ~T0 @X0 -> 0 `x e ]
 [i _segment_Array
 :U ..
@@ -1693,24 +1754,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 111 `i `uc
 ..
 ]
-[; ;myDefinition.h: 44: uint8_t segment_Array[]={0x3f,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-[; ;myDefinition.h: 46: extern void ASS_1(void);
-[; ;myDefinition.h: 47: extern void Ass_2(void);
-[; ;myDefinition.h: 52: typedef enum {
-[; ;myDefinition.h: 53: ASSIGNMENT_1,
-[; ;myDefinition.h: 54: ASSIGNMENT_2,
-[; ;myDefinition.h: 55: ASSIGNMENT_3,
-[; ;myDefinition.h: 56: ASSIGNMENT_4,
-[; ;myDefinition.h: 57: ASSIGNMENT_5,
-[; ;myDefinition.h: 58: ASSIGNMENT_6,
-[; ;myDefinition.h: 59: ASSIGNMENT_7
-[; ;myDefinition.h: 61: } t_Application;
-"63
-[v _g_state `E2011 ~T0 @X0 1 e ]
-[i _g_state
-. `E2011 0
+[; ;myDefinition.h: 45: uint8_t segment_Array[] = {0x3f, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+[; ;myDefinition.h: 47: extern void ASS_1(void);
+[; ;myDefinition.h: 48: extern void Ass_2(void);
+"49
+[v _shitf_Speed `uc ~T0 @X0 1 e ]
+[; ;myDefinition.h: 49: uint8_t shitf_Speed;
+"50
+[v _increaseTime_Enabled `uc ~T0 @X0 1 e ]
+[i _increaseTime_Enabled
+-> -> 0 `i `uc
 ]
-[; ;myDefinition.h: 63: t_Application g_state = ASSIGNMENT_1;
+[; ;myDefinition.h: 50: bool increaseTime_Enabled = 0;
+[; ;myDefinition.h: 55: typedef enum {
+[; ;myDefinition.h: 56: LED_DEMO,
+[; ;myDefinition.h: 57: PWM_DEMO,
+[; ;myDefinition.h: 58: ADC_DEMO,
+[; ;myDefinition.h: 59: USART_DEMO
+[; ;myDefinition.h: 60: } t_Application;
+"62
+[v _g_state `E2019 ~T0 @X0 1 e ]
+[i _g_state
+. `E2019 0
+]
+[; ;myDefinition.h: 62: t_Application g_state = LED_DEMO;
 "10 lcd_Config.c
 [v _Lcd_Port `(v ~T0 @X0 1 ef1`uc ]
 {
@@ -1794,9 +1861,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_Config.c: 35: PORTBbits.RB4 = 1;
 "35
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-[; ;lcd_Config.c: 36: _delay((unsigned long)((4)*(4000000UL/4000.0)));
+[; ;lcd_Config.c: 36: _delay((unsigned long)((4)*(8000000UL/4000.0)));
 "36
-[e ( __delay (1 -> * -> -> 4 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 4 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 [; ;lcd_Config.c: 37: PORTBbits.RB4 = 0;
 "37
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
@@ -1892,21 +1959,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_Config.c: 63: Lcd_Port(0x00);
 "63
 [e ( _Lcd_Port (1 -> -> 0 `i `uc ]
-[; ;lcd_Config.c: 64: _delay((unsigned long)((20)*(4000000UL/4000.0)));
+[; ;lcd_Config.c: 64: _delay((unsigned long)((20)*(8000000UL/4000.0)));
 "64
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 [; ;lcd_Config.c: 65: Lcd_Cmd(0x03);
 "65
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
-[; ;lcd_Config.c: 66: _delay((unsigned long)((5)*(4000000UL/4000.0)));
+[; ;lcd_Config.c: 66: _delay((unsigned long)((5)*(8000000UL/4000.0)));
 "66
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 [; ;lcd_Config.c: 67: Lcd_Cmd(0x03);
 "67
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
-[; ;lcd_Config.c: 68: _delay((unsigned long)((11)*(4000000UL/4000.0)));
+[; ;lcd_Config.c: 68: _delay((unsigned long)((11)*(8000000UL/4000.0)));
 "68
-[e ( __delay (1 -> * -> -> 11 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 11 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 [; ;lcd_Config.c: 69: Lcd_Cmd(0x03);
 "69
 [e ( _Lcd_Cmd (1 -> -> 3 `i `uc ]
@@ -1961,9 +2028,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_Config.c: 86: PORTBbits.RB4 = 1;
 "86
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-[; ;lcd_Config.c: 87: _delay((unsigned long)((40)*(4000000UL/4000000.0)));
+[; ;lcd_Config.c: 87: _delay((unsigned long)((40)*(8000000UL/4000000.0)));
 "87
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `ul `d .4000000.0 `ul ]
 [; ;lcd_Config.c: 88: PORTBbits.RB4 = 0;
 "88
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
@@ -1973,9 +2040,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd_Config.c: 90: PORTBbits.RB4 = 1;
 "90
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-[; ;lcd_Config.c: 91: _delay((unsigned long)((40)*(4000000UL/4000000.0)));
+[; ;lcd_Config.c: 91: _delay((unsigned long)((40)*(8000000UL/4000000.0)));
 "91
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 4000000 `ul `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `ul `d .4000000.0 `ul ]
 [; ;lcd_Config.c: 92: PORTBbits.RB4 = 0;
 "92
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]

@@ -20,9 +20,9 @@
 #pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
 #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
 #pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
-#pragma config IESO = ON        // Internal External Switchover bit (Internal/External Switchover mode is enabled)
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
-#pragma config LVP = ON         // Low Voltage Programming Enable bit (RB3/PGM pin has PGM function, low voltage programming enabled)
+#pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is enabled)
+#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
+#pragma config LVP = OFF         // Low Voltage Programming Enable bit (RB3/PGM pin has PGM function, low voltage programming enabled)
 
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)

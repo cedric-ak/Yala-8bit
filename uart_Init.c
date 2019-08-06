@@ -7,7 +7,7 @@
 
 #include "myDefinition.h"
 
-void UART_Init(uint16_t baudRate) {
+void UART_Init(uint32_t baudRate) {
 
     TRISCbits.TRISC6 = input;
     TRISCbits.TRISC7 = input;
@@ -16,12 +16,16 @@ void UART_Init(uint16_t baudRate) {
     TXSTAbits.SYNC = clear;         //asynchronous mode transmission
     TXSTAbits.TX9  = clear;         //select 8bit transmission
     RCSTAbits.SPEN = set;           //Serial port enabled
-    RCSTAbits.CREN = set;           //enable UART receiver
+    RCSTAbits.CREN = set;           //enable UART continuous receiver
     RCSTAbits.RX9  = clear;         //8 bit reception
+    RCSTAbits.ADDEN = set;
+    RCSTAbits.FERR  = clear;
+    RCSTAbits.OERR  = clear;
+    
     
     TXSTAbits.BRGH    = set;        //select high baud rate
-    BAUDCTLbits.BRG16 = clear;      //8bit baud rate generator is used    
-    SPBRG = ((_XTAL_FREQ/baudRate)/16)-1; //calculate baud rate
+    BAUDCTLbits.BRG16 = set;        //16bit baud rate generator is used    
+    SPBRG = ((_XTAL_FREQ/baudRate)/4)-1; //calculate baud rate
 }
 
 void UART_Write_char(uint16_t iData){
@@ -35,7 +39,11 @@ void UART_Write_String(uint8_t *cText) {
     }
 }
 
-uint16_t UART_Read(void) {
+char UART_Read(void) {
     while(!PIR1bits.RCIF)                          //wait for data to complete (do nothing while buffer is receiving)
     return RCREG;
+}
+
+bool UART_Data_available(void) {
+    return RCIF;
 }

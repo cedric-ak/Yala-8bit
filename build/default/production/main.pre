@@ -10,9 +10,9 @@
 #pragma config CP = OFF
 #pragma config CPD = OFF
 #pragma config BOREN = OFF
-#pragma config IESO = ON
-#pragma config FCMEN = ON
-#pragma config LVP = ON
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
 
 
 #pragma config BOR4V = BOR40V
@@ -2388,7 +2388,7 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
-# 79 "pin_Manager.h"
+# 82 "pin_Manager.h"
 void pinManager(void);
 
 # 24 "lcd_Config.h"
@@ -2404,15 +2404,15 @@ void Lcd_Shift_Left();
 
 # 42 "adc_Init.h"
 void ADC_Init(void);
-uint8_t temp_Measurement(void);
+uint16_t temp_Measurement(void);
 
 union {
-uint16_t result;
+uint8_t result;
 char reading[2];
 } adc;
 
 # 22 "_25LC160B_EEPROM.h"
-extern void eeprom_Write(uint8_t *iData, uint8_t iAddress);
+extern void eeprom_Write(uint8_t iData, uint8_t iAddress);
 extern void eeprom_Write_String(char *sText, uint8_t iAddress);
 extern uint8_t eeprom_Read(uint8_t iAddress);
 char eeprom_Read_String(uint16_t iAddress);
@@ -2421,12 +2421,19 @@ extern uint8_t internal_eeprom_read(uint8_t addr);
 extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 
 # 15 "uart_Init.h"
-extern void UART_Init(uint16_t baudRate);
+extern void UART_Init(uint32_t baudRate);
 extern void UART_Write_char(uint16_t iData);
 extern void UART_Write_String(uint8_t *cText);
-extern uint16_t UART_Read(void);
+extern char UART_Read(void);
+extern bool UART_Data_available(void);
 
-# 31 "myDefinition.h"
+# 15 "RN4020_Bluetooth.h"
+char CMD_mode[] = "$$$\r";
+uint8_t device_name[] = "SN,Yala Device\r";
+char reset_To_Factory[] ="SF,1\r";
+char BTH_reboot[] = "r,1\r";
+
+# 32 "myDefinition.h"
 void system_Initialize(void);
 extern void Oscillator_Init(void);
 extern void Interrupt_Init(void);
@@ -2440,61 +2447,85 @@ extern void SPI_MasterTransmit(uint8_t iData);
 
 uint8_t internal_eeprom_read(uint8_t addr);
 
-uint8_t segment_Array[]={0x3f,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+uint8_t segment_Array[] = {0x3f, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
 
 extern void ASS_1(void);
 extern void Ass_2(void);
+uint8_t shitf_Speed;
+bool increaseTime_Enabled = 0;
 
 
 
 
 typedef enum {
-ASSIGNMENT_1,
-ASSIGNMENT_2,
-ASSIGNMENT_3,
-ASSIGNMENT_4,
-ASSIGNMENT_5,
-ASSIGNMENT_6,
-ASSIGNMENT_7
-
+LED_DEMO,
+PWM_DEMO,
+ADC_DEMO,
+USART_DEMO
 } t_Application;
 
-t_Application g_state = ASSIGNMENT_1;
+t_Application g_state = LED_DEMO;
 
 # 11 "main.c"
+uint8_t shift = 1;
+void led_Demo(void);
+char da[10];
 int main(void) {
 
 system_Initialize();
 
+shitf_Speed = eeprom_Read(0x01);
+if(eeprom_Read(0x05) == 0xff || eeprom_Read(0x05) == 0x00){
+PORTD = 0x01;
+}else{
+PORTD = eeprom_Read(0x05);
+}
+
+
 while (1) {
-temp_Display();
+Lcd_Set_Cursor(1,1);
+Lcd_write("WELCOME TO YALA");
 
-switch(g_state){
-case ASSIGNMENT_1:
-ASS_1();
+switch (g_state) {
+
+case LED_DEMO:
+led_Demo();
 break;
 
-case ASSIGNMENT_2:
-Ass_2();
+case PWM_DEMO:
+
+eeprom_Write(0x00, 0x02);
+break;
+case ADC_DEMO:
+
+eeprom_Write(0x00, 0x03);
 break;
 
-case ASSIGNMENT_3:
+case USART_DEMO :
 
+eeprom_Write(0x00, 0x04);
 break;
-case ASSIGNMENT_5:
-
-break;
-
-case ASSIGNMENT_6:
-
-break;
-
-case ASSIGNMENT_7:
-
-break;
-
 }
 }
 return;
 }
 
+void led_Demo(void){
+_delay((unsigned long)((300)*(8000000UL/4000.0)));
+PORTD = PORTD << shift;
+eeprom_Write(PORTD, 0x05);
+if (PORTD == 0x80) {
+_delay((unsigned long)((300)*(8000000UL/4000.0)));
+PORTD = 0x01;
+}
+}
+
+void pwm_demo(void){
+if(PORTBbits.RB6 == 1){
+_delay((unsigned long)((10)*(8000000UL/4000.0)));
+if(PORTBbits.RB6 == 1){
+
+
+}
+}
+}

@@ -7,7 +7,7 @@
 
 #include "myDefinition.h"
 
-void eeprom_Write(uint8_t *iData, uint8_t iAddress){    
+void eeprom_Write(uint8_t iData, uint8_t iAddress){    
     /*consider interrupt on SPI*/
     CS_Chip_Select;                    //select EEPROM device
     SPI_MasterTransmit(WEN);          //Initiate write enable instruction
@@ -15,31 +15,30 @@ void eeprom_Write(uint8_t *iData, uint8_t iAddress){
     __delay_ms(2);
     
     CS_Chip_Select;
-    __delay_ms(5);                    //wait write internal cycle time
     SPI_MasterTransmit(WRITE);        //Initiate a write instruction
     SPI_MasterTransmit(iAddress>>8);  //assigned high register address MSB
     SPI_MasterTransmit(iAddress);     //assigned low register address LSB
     SPI_MasterTransmit(iData);        //send data to buffer
     CS_Chip_Desect;                   //deselect EEPROM device
+    __delay_ms(5); //wait write internal cycle time
 }
 
 void eeprom_Write_String(char *sText, uint8_t iAddress){
     
-    for(uint8_t iSize = 0; sText[iSize] != '\0'; iSize++){
-        eeprom_Write_String(sText[iSize], iAddress++);
-    }
+//    for(uint8_t iSize = 0; sText[iSize] != '\0'; iSize++){
+//        eeprom_Write_String(sText[iSize], iAddress++);
+//    }
 } 
 
 uint8_t eeprom_Read(uint8_t iAddress){
-    uint8_t *dataRead;
+    uint8_t dataRead;
     CS_Chip_Select;                         //select EEPROM device
-    __delay_ms(5);                          //wait write internal cycle time before attempt reading
     SPI_MasterTransmit(READ);               //initiate a read instruction
     SPI_MasterTransmit(iAddress>>8);        //assigned high register address MSB
     SPI_MasterTransmit(iAddress);           //assigned low register address LSB
     SPI_MasterTransmit(NULL);               //dummy data
     CS_Chip_Desect;                         //deselect EEPROM device
-    dataRead = &SSPBUF;
+    dataRead = SSPBUF;
     return dataRead;
 }
 

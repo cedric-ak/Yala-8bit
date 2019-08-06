@@ -75,6 +75,9 @@ extern "C" {
 #define TR2_Toggle          PORTAbits.RA2 ^= 1
 #define TR3_Toggle          PORTAbits.RA3 ^= 1
 #define TR4_Toggle          PORTAbits.RA4 ^= 1
+    
+#define CMD_MLDP_TRIS       
+#define WAKE_HW_TRIS
 
 void pinManager(void);
     

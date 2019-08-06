@@ -36,14 +36,14 @@ extern "C" {
 
 #define start_conversion         GO_DONE = 1
 #define stop_conversion          GO_DONE = 0
-#define conversion_inProgress    while(!PIR1bits.ADIF)
+#define conversion_inProgress    while(/*!PIR1bits.ADIF*/ADCON0bits.GO)
 #define conversion_complete      PIR1bits.ADIF
     
 void ADC_Init(void);
-uint8_t temp_Measurement(void);
+uint16_t temp_Measurement(void);
 
     union {
-        uint16_t result;
+        uint8_t result;
         char reading[2];
     } adc;
 
