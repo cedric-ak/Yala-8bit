@@ -2406,9 +2406,13 @@ extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 # 15 "uart_Init.h"
 extern void UART_Init(uint32_t baudRate);
 extern void UART_Write_char(uint16_t iData);
-extern void UART_Write_String(uint8_t *cText);
+extern void UART_Write_String(uint8_t cText[]);
 extern char UART_Read(void);
 extern bool UART_Data_available(void);
+extern uint16_t UART_Read_String(uint8_t* pbData, uint16_t iSize);
+uint8_t RxData[20];
+volatile uint16_t RxHead;
+volatile uint16_t RxTail;
 
 # 15 "RN4020_Bluetooth.h"
 char CMD_mode[] = "$$$\r";
@@ -2416,7 +2420,7 @@ uint8_t device_name[] = "SN,Yala Device\r";
 char reset_To_Factory[] ="SF,1\r";
 char BTH_reboot[] = "r,1\r";
 
-# 32 "myDefinition.h"
+# 38 "myDefinition.h"
 void system_Initialize(void);
 extern void Oscillator_Init(void);
 extern void Interrupt_Init(void);
@@ -2427,6 +2431,8 @@ extern void PWM_DutyCycle(uint32_t iDutyCycle);
 extern void TMR0_Init(void);
 extern void SPI_Init(void);
 extern void SPI_MasterTransmit(uint8_t iData);
+uint8_t RX_index;
+bool RecieveComplete = 0;
 
 uint8_t internal_eeprom_read(uint8_t addr);
 
@@ -2441,16 +2447,15 @@ bool increaseTime_Enabled = 0;
 
 
 typedef enum {
-LED_DEMO,
 PWM_DEMO,
 ADC_DEMO,
 USART_DEMO
 } t_Application;
 
-t_Application g_state = LED_DEMO;
+t_Application g_state = USART_DEMO;
 
-# 10 "Assignement_One.c"
-uint32_t *dataBuffer;
+# 11 "Assignement_One.c"
+char dataBuffer[]="";
 bool data_TransferComplete;
 char student_Number[] = "20114xxxx";
 char student_Name[] = "YalaTech";
@@ -2458,7 +2463,7 @@ char student_Name[] = "YalaTech";
 void ASS_1(void) {
 
 for (int bSize = 0; !PIR1bits.RCIF; bSize++) {
-dataBuffer[bSize] = UART_Read();
+dataBuffer[bSize] = (char)UART_Read();
 if (PIR1bits.RCIF)
 data_TransferComplete = 1;
 }

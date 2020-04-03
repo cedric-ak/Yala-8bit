@@ -29,6 +29,12 @@ extern "C" {
 #include "uart_Init.h"  
 #include "RN4020_Bluetooth.h"
 
+#define ASSIGNEMENT_ONE
+//#define ASSIGNEMENT_TWO
+//#define ASSIGNEMENT_THREE
+//#define ASSIGNEMENT_FOUR
+//#define ASSIGNEMENT_FIVE
+
     void system_Initialize(void);
     extern void Oscillator_Init(void);
     extern void Interrupt_Init(void);
@@ -39,6 +45,8 @@ extern "C" {
     extern void TMR0_Init(void);
     extern void SPI_Init(void);
     extern void SPI_MasterTransmit(uint8_t iData);
+    uint8_t RX_index;
+    bool RecieveComplete = false;
 
     uint8_t internal_eeprom_read(uint8_t addr);
 
@@ -53,13 +61,12 @@ extern "C" {
 #define Get_Application()           g_state
 
     typedef enum {
-        LED_DEMO,
         PWM_DEMO,
         ADC_DEMO,
         USART_DEMO
     } t_Application;
 
-    t_Application g_state = LED_DEMO;
+    t_Application g_state = USART_DEMO;
 
 
 #ifdef	__cplusplus

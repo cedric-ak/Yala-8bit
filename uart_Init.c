@@ -33,16 +33,42 @@ void UART_Write_char(uint16_t iData){
     TXREG = iData;
 }
 
-void UART_Write_String(uint8_t *cText) {
+void UART_Write_String(uint8_t cText[]) {
     for (int iSize = 0; cText[iSize] != '\0'; iSize++) {  //print strings and break at carriage return
         UART_Write_char(cText[iSize]);
     }
 }
 
 char UART_Read(void) {
-    while(!PIR1bits.RCIF)                          //wait for data to complete (do nothing while buffer is receiving)
+    while (!PIR1bits.RCIF) { //wait for data to complete (do nothing while buffer is receiving)
+//        RxData[RxHead++] = RCREG;
+//        if (RxHead == sizeof (RxData)) {
+//            RxHead = 0;
+//        }
+//
+//        if (RxHead == RxTail) {
+//            RxTail++;
+//            if (RxTail == sizeof (RxData)) {
+//                RxTail = 0;
+//            }
+//        }
+    }
+//    PIR1bits.RCIF = set;
     return RCREG;
 }
+
+ uint16_t UART_Read_String(uint8_t* pbData, uint16_t iSize) {
+        uint16_t iSizeRead = 0;
+
+        while (iSizeRead != iSize && RxTail != RxHead) {
+            pbData[iSizeRead++] = RxData[RxTail++];
+
+            if (RxTail == sizeof (RxData)) {
+                RxTail = 0;
+            }
+        }       
+        return iSizeRead;
+    }
 
 bool UART_Data_available(void) {
     return RCIF;

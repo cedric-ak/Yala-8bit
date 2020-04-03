@@ -8,7 +8,7 @@
 #include "myDefinition.h"
 uint16_t rawData;
 float temperature;
-char sTemperature[10];
+char sTemperature[5];
 
 void ADC_Init(void){
    ADCON0bits.ADCS    =  CONVER_CLK_FOSC_32;     //conversion clock Fosc/8  ===> 4Mz/8 (sec))

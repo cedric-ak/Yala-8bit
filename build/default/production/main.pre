@@ -2423,9 +2423,13 @@ extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 # 15 "uart_Init.h"
 extern void UART_Init(uint32_t baudRate);
 extern void UART_Write_char(uint16_t iData);
-extern void UART_Write_String(uint8_t *cText);
+extern void UART_Write_String(uint8_t cText[]);
 extern char UART_Read(void);
 extern bool UART_Data_available(void);
+extern uint16_t UART_Read_String(uint8_t* pbData, uint16_t iSize);
+uint8_t RxData[20];
+volatile uint16_t RxHead;
+volatile uint16_t RxTail;
 
 # 15 "RN4020_Bluetooth.h"
 char CMD_mode[] = "$$$\r";
@@ -2433,7 +2437,7 @@ uint8_t device_name[] = "SN,Yala Device\r";
 char reset_To_Factory[] ="SF,1\r";
 char BTH_reboot[] = "r,1\r";
 
-# 32 "myDefinition.h"
+# 38 "myDefinition.h"
 void system_Initialize(void);
 extern void Oscillator_Init(void);
 extern void Interrupt_Init(void);
@@ -2444,6 +2448,8 @@ extern void PWM_DutyCycle(uint32_t iDutyCycle);
 extern void TMR0_Init(void);
 extern void SPI_Init(void);
 extern void SPI_MasterTransmit(uint8_t iData);
+uint8_t RX_index;
+bool RecieveComplete = 0;
 
 uint8_t internal_eeprom_read(uint8_t addr);
 
@@ -2458,74 +2464,30 @@ bool increaseTime_Enabled = 0;
 
 
 typedef enum {
-LED_DEMO,
 PWM_DEMO,
 ADC_DEMO,
 USART_DEMO
 } t_Application;
 
-t_Application g_state = LED_DEMO;
+t_Application g_state = USART_DEMO;
 
 # 11 "main.c"
-uint8_t shift = 1;
-void led_Demo(void);
-char da[10];
+char buffer[10];
+
+
+
 int main(void) {
 
 system_Initialize();
 
-shitf_Speed = eeprom_Read(0x01);
-if(eeprom_Read(0x05) == 0xff || eeprom_Read(0x05) == 0x00){
-PORTD = 0x01;
-}else{
-PORTD = eeprom_Read(0x05);
-}
-
-
 while (1) {
-Lcd_Set_Cursor(1,1);
-Lcd_write("WELCOME TO YALA");
 
-switch (g_state) {
-
-case LED_DEMO:
-led_Demo();
-break;
-
-case PWM_DEMO:
-
-eeprom_Write(0x00, 0x02);
-break;
-case ADC_DEMO:
-
-eeprom_Write(0x00, 0x03);
-break;
-
-case USART_DEMO :
-
-eeprom_Write(0x00, 0x04);
-break;
+for (int dutyCicle = 0; dutyCicle < 100; dutyCicle++) {
+PWM_DutyCycle(dutyCicle);
+_delay((unsigned long)((50)*(8000000UL/4000.0)));
 }
+
+# 41
 }
 return;
-}
-
-void led_Demo(void){
-_delay((unsigned long)((300)*(8000000UL/4000.0)));
-PORTD = PORTD << shift;
-eeprom_Write(PORTD, 0x05);
-if (PORTD == 0x80) {
-_delay((unsigned long)((300)*(8000000UL/4000.0)));
-PORTD = 0x01;
-}
-}
-
-void pwm_demo(void){
-if(PORTBbits.RB6 == 1){
-_delay((unsigned long)((10)*(8000000UL/4000.0)));
-if(PORTBbits.RB6 == 1){
-
-
-}
-}
 }

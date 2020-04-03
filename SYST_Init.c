@@ -12,11 +12,11 @@ void system_Initialize(void) {
     Interrupt_Init();
     pinManager();
     Lcd_Init();
-    ADC_Init();
-    TMR0_Init();
+    //ADC_Init();
+    //TMR0_Init();
     PWM_Init(10000);   //10Khz set frequency
     PWM_DutyCycle(80); //80% duty cycle
-    SPI_Init();
+//    SPI_Init();
     UART_Init(9600); //Baudrate
 }
 

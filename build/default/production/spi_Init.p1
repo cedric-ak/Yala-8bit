@@ -2,9 +2,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "45 adc_Init.h
 [u S143 `uc 1 `uc -> 2 `i ]
 [n S143 . result reading ]
-"62 myDefinition.h
-[c E2019 0 1 2 3 .. ]
-[n E2019 . LED_DEMO PWM_DEMO ADC_DEMO USART_DEMO  ]
+"69 myDefinition.h
+[c E2027 0 1 2 .. ]
+[n E2027 . PWM_DEMO ADC_DEMO USART_DEMO  ]
 "854 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f887.h
 [s S30 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S30 . SSPM CKP SSPEN SSPOV WCOL ]
@@ -1689,9 +1689,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 [; ;uart_Init.h: 15: extern void UART_Init(uint32_t baudRate);
 [; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
-[; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t *cText);
+[; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t cText[]);
 [; ;uart_Init.h: 18: extern char UART_Read(void);
 [; ;uart_Init.h: 19: extern bool UART_Data_available(void);
+[; ;uart_Init.h: 20: extern uint16_t UART_Read_String(uint8_t* pbData, uint16_t iSize);
+"21 uart_Init.h
+[v _RxData `uc ~T0 @X0 -> 20 `i e ]
+[; ;uart_Init.h: 21: uint8_t RxData[20];
+"22
+[v _RxHead `Vui ~T0 @X0 1 e ]
+[; ;uart_Init.h: 22: volatile uint16_t RxHead;
+"23
+[v _RxTail `Vui ~T0 @X0 1 e ]
+[; ;uart_Init.h: 23: volatile uint16_t RxTail;
 "15 RN4020_Bluetooth.h
 [v _CMD_mode `uc ~T0 @X0 -> 0 `x e ]
 [i _CMD_mode
@@ -1752,20 +1762,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;RN4020_Bluetooth.h: 18: char BTH_reboot[] = "r,1\r";
-[; ;myDefinition.h: 32: void system_Initialize(void);
-[; ;myDefinition.h: 33: extern void Oscillator_Init(void);
-[; ;myDefinition.h: 34: extern void Interrupt_Init(void);
-[; ;myDefinition.h: 35: extern void temp_Display(void);
-"36 myDefinition.h
+[; ;myDefinition.h: 38: void system_Initialize(void);
+[; ;myDefinition.h: 39: extern void Oscillator_Init(void);
+[; ;myDefinition.h: 40: extern void Interrupt_Init(void);
+[; ;myDefinition.h: 41: extern void temp_Display(void);
+"42 myDefinition.h
 [v _segment_Variable `ui ~T0 @X0 1 e ]
-[; ;myDefinition.h: 36: unsigned int segment_Variable;
-[; ;myDefinition.h: 37: extern void PWM_Init(uint32_t iFrequency);
-[; ;myDefinition.h: 38: extern void PWM_DutyCycle(uint32_t iDutyCycle);
-[; ;myDefinition.h: 39: extern void TMR0_Init(void);
-[; ;myDefinition.h: 40: extern void SPI_Init(void);
-[; ;myDefinition.h: 41: extern void SPI_MasterTransmit(uint8_t iData);
-[; ;myDefinition.h: 43: uint8_t internal_eeprom_read(uint8_t addr);
-"45
+[; ;myDefinition.h: 42: unsigned int segment_Variable;
+[; ;myDefinition.h: 43: extern void PWM_Init(uint32_t iFrequency);
+[; ;myDefinition.h: 44: extern void PWM_DutyCycle(uint32_t iDutyCycle);
+[; ;myDefinition.h: 45: extern void TMR0_Init(void);
+[; ;myDefinition.h: 46: extern void SPI_Init(void);
+[; ;myDefinition.h: 47: extern void SPI_MasterTransmit(uint8_t iData);
+"48
+[v _RX_index `uc ~T0 @X0 1 e ]
+[; ;myDefinition.h: 48: uint8_t RX_index;
+"49
+[v _RecieveComplete `uc ~T0 @X0 1 e ]
+[i _RecieveComplete
+-> -> 0 `i `uc
+]
+[; ;myDefinition.h: 49: bool RecieveComplete = 0;
+[; ;myDefinition.h: 51: uint8_t internal_eeprom_read(uint8_t addr);
+"53
 [v _segment_Array `uc ~T0 @X0 -> 0 `x e ]
 [i _segment_Array
 :U ..
@@ -1781,30 +1800,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 111 `i `uc
 ..
 ]
-[; ;myDefinition.h: 45: uint8_t segment_Array[] = {0x3f, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
-[; ;myDefinition.h: 47: extern void ASS_1(void);
-[; ;myDefinition.h: 48: extern void Ass_2(void);
-"49
+[; ;myDefinition.h: 53: uint8_t segment_Array[] = {0x3f, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
+[; ;myDefinition.h: 55: extern void ASS_1(void);
+[; ;myDefinition.h: 56: extern void Ass_2(void);
+"57
 [v _shitf_Speed `uc ~T0 @X0 1 e ]
-[; ;myDefinition.h: 49: uint8_t shitf_Speed;
-"50
+[; ;myDefinition.h: 57: uint8_t shitf_Speed;
+"58
 [v _increaseTime_Enabled `uc ~T0 @X0 1 e ]
 [i _increaseTime_Enabled
 -> -> 0 `i `uc
 ]
-[; ;myDefinition.h: 50: bool increaseTime_Enabled = 0;
-[; ;myDefinition.h: 55: typedef enum {
-[; ;myDefinition.h: 56: LED_DEMO,
-[; ;myDefinition.h: 57: PWM_DEMO,
-[; ;myDefinition.h: 58: ADC_DEMO,
-[; ;myDefinition.h: 59: USART_DEMO
-[; ;myDefinition.h: 60: } t_Application;
-"62
-[v _g_state `E2019 ~T0 @X0 1 e ]
+[; ;myDefinition.h: 58: bool increaseTime_Enabled = 0;
+[; ;myDefinition.h: 63: typedef enum {
+[; ;myDefinition.h: 64: PWM_DEMO,
+[; ;myDefinition.h: 65: ADC_DEMO,
+[; ;myDefinition.h: 66: USART_DEMO
+[; ;myDefinition.h: 67: } t_Application;
+"69
+[v _g_state `E2027 ~T0 @X0 1 e ]
 [i _g_state
-. `E2019 0
+. `E2027 2
 ]
-[; ;myDefinition.h: 62: t_Application g_state = LED_DEMO;
+[; ;myDefinition.h: 69: t_Application g_state = USART_DEMO;
 "10 spi_Init.c
 [v _SPI_Init `(v ~T0 @X0 1 ef ]
 {

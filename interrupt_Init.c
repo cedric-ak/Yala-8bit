@@ -15,17 +15,18 @@ void Interrupt_Init(void) {
 //    PIE1bits.ADIE = set;   //enable ADC (Analog to Digital converter) interrupt
 //    PIR1bits.ADIF = clear; //clear ADC interrupt flag 
 //    
-    PIE1bits.RCIE = set;   //EUSART receive interrupt enabled
-    PIR1bits.RCIF = clear; //clear EUSART receive interrupt
+    //PIE1bits.RCIE = set;   //EUSART receive interrupt enabled
+   // PIR1bits.RCIF = clear; //clear EUSART receive interrupt
     
 //    PIE2bits.EEIE = set;  //enable EEPROM interrupt
 //    PIR2bits.EEIF = clear;
 }
 
 void interrupt ISR(void) {
-    if(PIE1bits.RCIE == set && PIR1bits.RCIF == set){      //if received data ready or complete
-//        PIR1bits.RCIF = clear;
-    }
+//    if(PIE1bits.RCIE == set && PIR1bits.RCIF == set){      //if received data ready or complete
+////        PIR1bits.RCIF = clear;      
+//        UART_Read();
+//    }
 //    if (PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1) {         //ADC conversion is complete clear interrupt flag
 //        PIR1bits.ADIF = clear;                              //clear ADC interrupt flag at completion of conversion 
 //    }
