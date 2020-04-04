@@ -1712,7 +1712,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;_25LC160B_EEPROM.h: 27: extern uint8_t internal_eeprom_read(uint8_t addr);
 [; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 [; ;uart_Init.h: 15: extern void UART_Init(uint32_t baudRate);
-[; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
+[; ;uart_Init.h: 16: extern void UART_Write_char(uint8_t iData);
 [; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t cText[]);
 [; ;uart_Init.h: 18: extern char UART_Read(void);
 [; ;uart_Init.h: 19: extern bool UART_Data_available(void);
@@ -1901,11 +1901,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 144 ]
 }
 "31
-[v _UART_Write_char `(v ~T0 @X0 1 ef1`ui ]
+[v _UART_Write_char `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;uart_Init.c: 31: void UART_Write_char(uint16_t iData){
+[; ;uart_Init.c: 31: void UART_Write_char(uint8_t iData){
 [e :U _UART_Write_char ]
-[v _iData `ui ~T0 @X0 1 r1 ]
+[v _iData `uc ~T0 @X0 1 r1 ]
 [f ]
 [; ;uart_Init.c: 32: while(!TXSTAbits.TRMT);
 "32
@@ -1916,7 +1916,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 148 ]
 [; ;uart_Init.c: 33: TXREG = iData;
 "33
-[e = _TXREG -> _iData `uc ]
+[e = _TXREG _iData ]
 [; ;uart_Init.c: 34: }
 "34
 [e :UE 145 ]
@@ -1938,7 +1938,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;uart_Init.c: 38: UART_Write_char(cText[iSize]);
 "38
-[e ( _UART_Write_char (1 -> *U + _cText * -> _iSize `x -> -> # *U _cText `i `x `ui ]
+[e ( _UART_Write_char (1 *U + _cText * -> _iSize `x -> -> # *U _cText `i `x ]
 "39
 }
 "37

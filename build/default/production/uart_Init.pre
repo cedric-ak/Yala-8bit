@@ -2405,7 +2405,7 @@ extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 
 # 15 "uart_Init.h"
 extern void UART_Init(uint32_t baudRate);
-extern void UART_Write_char(uint16_t iData);
+extern void UART_Write_char(uint8_t iData);
 extern void UART_Write_String(uint8_t cText[]);
 extern char UART_Read(void);
 extern bool UART_Data_available(void);
@@ -2476,7 +2476,7 @@ BAUDCTLbits.BRG16 = 1;
 SPBRG = ((8000000UL/baudRate)/4)-1;
 }
 
-void UART_Write_char(uint16_t iData){
+void UART_Write_char(uint8_t iData){
 while(!TXSTAbits.TRMT);
 TXREG = iData;
 }

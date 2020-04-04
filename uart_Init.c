@@ -28,7 +28,7 @@ void UART_Init(uint32_t baudRate) {
     SPBRG = ((_XTAL_FREQ/baudRate)/4)-1; //calculate baud rate
 }
 
-void UART_Write_char(uint16_t iData){
+void UART_Write_char(uint8_t iData){
     while(!TXSTAbits.TRMT);          //wait for transmit to complete
     TXREG = iData;
 }

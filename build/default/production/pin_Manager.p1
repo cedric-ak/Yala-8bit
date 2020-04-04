@@ -1708,7 +1708,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;_25LC160B_EEPROM.h: 27: extern uint8_t internal_eeprom_read(uint8_t addr);
 [; ;_25LC160B_EEPROM.h: 28: extern void internal_eeprom_write(uint8_t addr, uint8_t data);
 [; ;uart_Init.h: 15: extern void UART_Init(uint32_t baudRate);
-[; ;uart_Init.h: 16: extern void UART_Write_char(uint16_t iData);
+[; ;uart_Init.h: 16: extern void UART_Write_char(uint8_t iData);
 [; ;uart_Init.h: 17: extern void UART_Write_String(uint8_t cText[]);
 [; ;uart_Init.h: 18: extern char UART_Read(void);
 [; ;uart_Init.h: 19: extern bool UART_Data_available(void);
